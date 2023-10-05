@@ -6,16 +6,17 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float moveSpeed = 5f;
     public float turnSpeed = 10f;
 
     private Rigidbody2D rigidBody;
+    private Player player;
     private Vector2 moveDirection = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -66,6 +67,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidBody.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        rigidBody.AddForce(moveDirection.normalized * player.moveSpeed);
     }
 }

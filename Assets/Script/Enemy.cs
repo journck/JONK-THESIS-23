@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Character
 {
     public float shootInterval = 1f;
     private Vector2 playerPosition = Vector2.zero;
-    public float moveSpeed = 7f;
-    public int health = 100;
-
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +37,7 @@ public class Enemy : MonoBehaviour
 
     public void ShootAtPosition( Vector2 pos)
     {
-        Bullet bullet = BulletPooling.instance.GetAvailableBullet();
+        EnemyBullet bullet = BulletPooling.instance.GetAvailableEnemyBullet();
         bullet.transform.position = this.transform.position + this.transform.up;
         bullet.transform.rotation = this.transform.rotation;
 

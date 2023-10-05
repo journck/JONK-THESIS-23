@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
     public GameObject bulletPrefab;
     // interval in between bullet shots
@@ -55,11 +55,5 @@ public class Player : MonoBehaviour
 
     private void Shoot()
     {
-        Bullet bullet = BulletPooling.instance.GetAvailableBullet();
-        bullet.transform.position = this.transform.position + this.transform.up;
-        bullet.transform.rotation = this.transform.rotation;
-        bullet.gameObject.layer = LayerMask.NameToLayer("FriendlyBullet");
-        bullet.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-        bullet.ProjectBullet(transform.up);
     }
 }

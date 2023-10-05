@@ -5,10 +5,12 @@ using UnityEngine.Pool;
 
 public class BulletPooling : MonoBehaviour
 {
+
     public static BulletPooling instance;
-    public Bullet bulletPrefab;
-    public List<Bullet> bulletPool;
-    public int initialSize = 20;
+    public EnemyBullet enemyBulletPrefab;
+    public List<EnemyBullet> enemyBulletPool;
+    public int initialEnemyBulletSize = 20;
+    public int initialPlayerBulletSize = 20;
 
 
     private void Awake()
@@ -21,22 +23,22 @@ public class BulletPooling : MonoBehaviour
 
     void Start()
     {
-        InstantiatePool();
+        InstantiatePools();
     }
 
-    private void InstantiatePool()
+    private void InstantiatePools()
     {
-        for (int i = 0; i < this.initialSize; i++)
+        for (int i = 0; i < this.initialEnemyBulletSize; i++)
         {
-            Bullet bullet = Instantiate(bulletPrefab);
-            bullet.gameObject.SetActive(false);
-            bulletPool.Add(bullet);
+            EnemyBullet enemyBullet = Instantiate(enemyBulletPrefab);
+            enemyBullet.gameObject.SetActive(false);
+            enemyBulletPool.Add(enemyBullet);
         }
     }
 
-    public Bullet GetAvailableBullet()
+    public EnemyBullet GetAvailableEnemyBullet()
     {
-        foreach (Bullet bullet in bulletPool)
+        foreach (EnemyBullet bullet in enemyBulletPool)
         {
             if (!bullet.gameObject.activeInHierarchy)
             {
@@ -45,17 +47,18 @@ public class BulletPooling : MonoBehaviour
             }
         }
 
-        // no available bullets, adding to bulletPool
-        Bullet newBullet = Instantiate(bulletPrefab);
+        // no available bullets, adding to enemyBulletPool
+        EnemyBullet newBullet = Instantiate(enemyBulletPrefab);
         newBullet.gameObject.SetActive(true);
-        bulletPool.Add(newBullet);
+        enemyBulletPool.Add(newBullet);
+        Debug.Log("enemyBulletPool is full: adding another. current size:"
+            + enemyBulletPool.Count);
         return newBullet;
     }
 
-    public void ReturnToPool( Bullet bullet )
+    public void ReturnToPool( EnemyBullet bullet )
     {
         //TODO - there's gotta be a better way to do this man
-        bullet.gameObject.layer = LayerMask.NameToLayer("Bullet");
         bullet.gameObject.SetActive(false);
     }
 }
