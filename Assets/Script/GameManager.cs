@@ -6,9 +6,10 @@ public class GameManager : MonoBehaviour
 {
     //TODO - iterate over array of players.
     //public Player[] players = new Player[4];
-    public Player player;
 
     public static GameManager instance;
+
+    public static Enemy[] levelEnemies;
 
     // Start is called before the first frame update
     void Start()

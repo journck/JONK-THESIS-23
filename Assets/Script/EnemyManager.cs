@@ -9,12 +9,15 @@ public class EnemyManager : MonoBehaviour
     // this is the 'radius' of the square ( i.e. half of a sidelength )
     public float spawnDistance = 10f;
 
+    private Field parentField;
+
     //TODO - should make this an array that I can randomly choose from
     public Enemy enemyPrefab;
 
     private void Start()
     {
-        StartCoroutine(SpawnEnemy());
+        Invoke(nameof(SpawnEnemy), spawnInterval);
+        parentField = GetComponentInParent<Field>();
     }
 
     public Vector3 GetPointOnSquareEdge(float degrees)
@@ -52,14 +55,17 @@ public class EnemyManager : MonoBehaviour
         return new Vector3(x, y, 0);
     }
 
-    IEnumerator SpawnEnemy()
+    void SpawnEnemy()
     {
-        while ( true )
-        {
-            Vector3 spawnPoint = this.transform.position + GetPointOnSquareEdge(Random.value * 360);
-            //TODO - pool enemies
-            Enemy createdEnemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
-            yield return new WaitForSecondsRealtime(spawnInterval);
-        }
+
+        Vector3 spawnPoint = this.transform.position + GetPointOnSquareEdge(Random.value * 360);
+        //TODO - pool enemies
+        Enemy createdEnemy = Instantiate(enemyPrefab);
+        createdEnemy.transform.parent = this.transform;
+        createdEnemy.transform.position = spawnPoint;
+
+        parentField.enemyList.Add(createdEnemy);
+        
+        Invoke(nameof(SpawnEnemy), spawnInterval);
     }
 }

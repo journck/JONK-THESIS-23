@@ -99,9 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234c6cbaacf444496bac565caf4c294f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootInterval: 1
-  moveSpeed: 2
   health: 100
+  maxHealth: 0
+  moveSpeed: 2
+  shootInterval: 1
+  bulletMoveSpeed: 10
+  bulletDamage: 10
+  turnEasing: 0.95
+  moveEasing: 0.05
+  parentField: {fileID: 0}
 --- !u!58 &8641865576125782441
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -7,10 +7,9 @@ public class BulletPooling : MonoBehaviour
 {
 
     public static BulletPooling instance;
-    public EnemyBullet enemyBulletPrefab;
-    public List<EnemyBullet> enemyBulletPool;
-    public int initialEnemyBulletSize = 20;
-    public int initialPlayerBulletSize = 20;
+    public Bullet bulletPrefab;
+    public List<Bullet> bulletPool;
+    public int initialSize = 20;
 
 
     private void Awake()
@@ -28,17 +27,17 @@ public class BulletPooling : MonoBehaviour
 
     private void InstantiatePools()
     {
-        for (int i = 0; i < this.initialEnemyBulletSize; i++)
+        for (int i = 0; i < this.initialSize; i++)
         {
-            EnemyBullet enemyBullet = Instantiate(enemyBulletPrefab);
-            enemyBullet.gameObject.SetActive(false);
-            enemyBulletPool.Add(enemyBullet);
+            Bullet bullet = Instantiate(bulletPrefab);
+            bullet.gameObject.SetActive(false);
+            bulletPool.Add(bullet);
         }
     }
 
-    public EnemyBullet GetAvailableEnemyBullet()
+    public Bullet GetAvailableBullet()
     {
-        foreach (EnemyBullet bullet in enemyBulletPool)
+        foreach (Bullet bullet in bulletPool)
         {
             if (!bullet.gameObject.activeInHierarchy)
             {
@@ -47,16 +46,16 @@ public class BulletPooling : MonoBehaviour
             }
         }
 
-        // no available bullets, adding to enemyBulletPool
-        EnemyBullet newBullet = Instantiate(enemyBulletPrefab);
+        // no available bullets, adding to bulletPool
+        Bullet newBullet = Instantiate(bulletPrefab);
         newBullet.gameObject.SetActive(true);
-        enemyBulletPool.Add(newBullet);
-        Debug.Log("enemyBulletPool is full: adding another. current size:"
-            + enemyBulletPool.Count);
+        bulletPool.Add(newBullet);
+        Debug.Log("bulletPool is full: adding another. current size:"
+            + bulletPool.Count);
         return newBullet;
     }
 
-    public void ReturnToPool( EnemyBullet bullet )
+    public void ReturnToPool( Bullet bullet )
     {
         //TODO - there's gotta be a better way to do this man
         bullet.gameObject.SetActive(false);

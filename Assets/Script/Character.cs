@@ -1,14 +1,16 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 public class Character : MonoBehaviour
 {
     public float health;
+    public float maxHealth;
     public int moveSpeed;
 
-    public void takeDamage ( float iDamage )
+    public virtual void takeDamage ( float iDamage )
     {
         float damage = iDamage;
         // DO ANY DAMAGE MODIFIERS ETC HERE.
@@ -16,7 +18,7 @@ public class Character : MonoBehaviour
         // PLAYER DIED
         if ( health - damage <= 0 )
         {
-            Debug.Log("DOING DAMAGE!!");
+            Debug.Log("DEAD!");
             health = 0;
             doDeath();
         }
@@ -28,7 +30,7 @@ public class Character : MonoBehaviour
 
     public void doDeath()
     {
-        // ALL DEATH LOGIC HERE.
+        SceneManager.LoadScene("SampleScene");
     }
 
 }
