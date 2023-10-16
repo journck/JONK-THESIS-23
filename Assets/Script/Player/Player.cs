@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Player : Character
 {
-    public GameObject bulletPrefab;
+    [Header("Inscribed")]
     // interval in between bullet shots
     public float shootInterval = 1f;
     public float positionSendInterval = 1.0f;
-    public HealthBar healthBar;
 
+    private HealthBar healthBar;
     private Rigidbody2D rigidBody;
     private Field parentField;
     // Start is called before the first frame update
@@ -43,7 +43,6 @@ public class Player : Character
     {
         foreach (Enemy enemy in parentField.enemyList)
         {
-            Debug.Log("sendingposition");
             enemy.ReceivePlayerPosition(this.transform.position);
         }
         Invoke(nameof(SendPositionToEnemies), positionSendInterval);
@@ -51,12 +50,24 @@ public class Player : Character
 
     private void Shoot()
     {
+        Bullet availableBullet = BulletPooling.instance.GetAvailableBullet();
+
+        availableBullet.setBulletProperties(this.transform.position + this.transform.up,
+            this.transform.rotation,
+            Color.green,
+            bulletMoveSpeed,
+            bulletDamage);
+
+        availableBullet.owner = this;
+
+        availableBullet.ProjectBullet(this.transform.up);
+
         Invoke(nameof(Shoot), shootInterval);
     }
 
-    public override void takeDamage(float iDamage)
+    public override void TakeDamage(float iDamage)
     {
-        base.takeDamage(iDamage);
+        base.TakeDamage(iDamage);
         healthBar.UpdateSlider(this.health / this.maxHealth);
     } 
 }

@@ -18,6 +18,7 @@ public class Field : MonoBehaviour
     {
         Player playerPrefab = players[Random.Range(0, players.Length)];
         player = Instantiate(playerPrefab, this.transform);
+        player.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 4) * 90);
         enemyManager = GetComponentInChildren<EnemyManager>();
     }
 

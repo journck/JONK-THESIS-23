@@ -22,11 +22,11 @@ public class Bullet : MonoBehaviour
     // linear projection
     public void ProjectBullet(Vector2 direction)
     {
-        Vector2 force = direction.normalized * moveSpeed;
-        rigidBody.velocity = force;
+        Vector2 vel = direction.normalized * moveSpeed;
+        rigidBody.velocity = vel;
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         GameObject otherGO = other.gameObject;
 
@@ -35,15 +35,26 @@ public class Bullet : MonoBehaviour
             BulletPooling.instance.ReturnToPool(this);
         }
 
-        Character target = otherGO.GetComponent<Character>();
-        if (target != null && target != owner)
+
+        Enemy hitEnemy = otherGO.GetComponent<Enemy>();
+        if ( hitEnemy != null )
         {
-            if (target is Player)
-            {
-                (target as Player).takeDamage(this.damage);
-            }
+            Debug.Log("yo you hit an enemyy");
         }
-        BulletPooling.instance.ReturnToPool(this);
+        Player hitPlayer = otherGO.GetComponent<Player>();
+        if ( owner is Player && hitEnemy != null )
+        {
+            Debug.Log("PLAYER BULLET HIT ENEMY");
+            hitEnemy.TakeDamage(this.damage);
+            BulletPooling.instance.ReturnToPool(this);
+            return;
+        }
+        if ( owner is Enemy && hitPlayer != null)
+        {
+            hitPlayer.TakeDamage(this.damage);
+            BulletPooling.instance.ReturnToPool(this);
+            return;
+        }
     }
 
     public void setBulletProperties( Vector3 pos, Quaternion rotation, Color color, float moveSpeed, float damage)

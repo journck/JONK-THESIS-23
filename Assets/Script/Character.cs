@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
+    [Header("Character - Inscribed")]
     public float health;
     public float maxHealth;
     public int moveSpeed;
+    public float bulletMoveSpeed;
+    public float bulletDamage;
 
-    public virtual void takeDamage ( float iDamage )
+
+    public virtual void TakeDamage ( float iDamage )
     {
         float damage = iDamage;
         // DO ANY DAMAGE MODIFIERS ETC HERE.
@@ -20,7 +24,7 @@ public class Character : MonoBehaviour
         {
             Debug.Log("DEAD!");
             health = 0;
-            doDeath();
+            DoDeath();
         }
         else
         {
@@ -28,7 +32,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void doDeath()
+    public void DoDeath()
     {
         SceneManager.LoadScene("SampleScene");
     }

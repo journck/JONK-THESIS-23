@@ -6,8 +6,6 @@ public class Enemy : Character
 {
     public float shootInterval = 1f;
     private Vector2 playerPosition = Vector2.zero;
-    public float bulletMoveSpeed = 30f;
-    public float bulletDamage = 10f;
     public float turnEasing = 0.05f;
     public float moveEasing = 0.05f;
 
@@ -46,6 +44,8 @@ public class Enemy : Character
         bullet.setBulletProperties(this.transform.position + this.transform.up,
             this.transform.rotation,
             Color.red, bulletMoveSpeed, bulletDamage);
+
+        bullet.owner = this;
 
         // you're already looking @ the player, so you should shoot @ it.
         bullet.ProjectBullet(this.transform.up);

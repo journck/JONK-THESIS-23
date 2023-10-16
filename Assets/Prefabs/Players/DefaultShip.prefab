@@ -265,10 +265,10 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   moveSpeed: 75
-  bulletPrefab: {fileID: 0}
+  bulletMoveSpeed: 10
+  bulletDamage: 10
   shootInterval: 1
   positionSendInterval: 1
-  healthBar: {fileID: 0}
 --- !u!114 &4601298099403982108
 MonoBehaviour:
   m_ObjectHideFlags: 0
