@@ -769,8 +769,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.5
-    height: 0.5
+    width: 0.46
+    height: 0.46
   near clip plane: 3
   far clip plane: 1000
   field of view: 60
@@ -1007,6 +1007,54 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &633617623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 633617624}
+  - component: {fileID: 633617625}
+  m_Layer: 0
+  m_Name: EnemyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &633617624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633617623}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 820335395}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &633617625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633617623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0db98926f4e4e9b865e9511d2a32b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnInterval: 2.5
+  spawnDistance: 11
+  enemyPrefab: {fileID: 8641865576125782446, guid: 6c02e3383088b4449b07eba4bbd83002,
+    type: 3}
 --- !u!1 &696726793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,9 +1116,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.5
-    width: 0.5
-    height: 0.5
+    y: 0.54
+    width: 0.46
+    height: 0.46
   near clip plane: 3
   far clip plane: 1000
   field of view: 60
@@ -1150,7 +1198,7 @@ GameObject:
   - component: {fileID: 820335395}
   - component: {fileID: 820335396}
   m_Layer: 0
-  m_Name: TopLeftField
+  m_Name: BottomLeftField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1170,7 +1218,7 @@ Transform:
   m_Children:
   - {fileID: 1835565864}
   - {fileID: 489073683}
-  - {fileID: 1964505588}
+  - {fileID: 633617624}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1955,10 +2003,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5
+    x: 0.54
     y: 0
-    width: 0.5
-    height: 0.5
+    width: 0.46
+    height: 0.46
   near clip plane: 3
   far clip plane: 1000
   field of view: 60
@@ -2651,10 +2699,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5
-    y: 0.5
-    width: 0.5
-    height: 0.5
+    x: 0.54
+    y: 0.54
+    width: 0.46
+    height: 0.46
   near clip plane: 3
   far clip plane: 1000
   field of view: 60
@@ -3589,12 +3637,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!4 &1964505588 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-    type: 3}
-  m_PrefabInstance: {fileID: 6312646060786122713}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1972348648
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,72 +3888,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &6312646060786122713
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 820335395}
-    m_Modifications:
-    - target: {fileID: 6312646058824107563, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_Name
-      value: EnemyManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6312646058824107565, guid: 46a483e7a0ef949a4a5bc1213d3c6306,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 46a483e7a0ef949a4a5bc1213d3c6306, type: 3}
