@@ -34,7 +34,12 @@ public class Character : MonoBehaviour
 
     public void DoDeath()
     {
-        SceneManager.LoadScene("SampleScene");
+        GameManager.instance.CheckForRestart();
+    }
+
+    public bool IsDead()
+    {
+        return this.health <= 0;
     }
 
 }

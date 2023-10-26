@@ -37,10 +37,6 @@ public class Bullet : MonoBehaviour
 
 
         Enemy hitEnemy = otherGO.GetComponent<Enemy>();
-        if ( hitEnemy != null )
-        {
-            Debug.Log("yo you hit an enemyy");
-        }
         Player hitPlayer = otherGO.GetComponent<Player>();
         if ( owner is Player && hitEnemy != null )
         {

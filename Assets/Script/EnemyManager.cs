@@ -59,9 +59,7 @@ public class EnemyManager : MonoBehaviour
     {
 
         Vector3 spawnPoint = this.transform.position + GetPointOnSquareEdge(Random.value * 360);
-        //TODO - pool enemies
-        Enemy createdEnemy = Instantiate(enemyPrefab);
-        createdEnemy.transform.parent = this.transform;
+        Enemy createdEnemy = Instantiate(enemyPrefab, parentField.transform);
         createdEnemy.transform.position = spawnPoint;
 
         parentField.enemyList.Add(createdEnemy);

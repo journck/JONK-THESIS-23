@@ -69,5 +69,5 @@ public class Player : Character
     {
         base.TakeDamage(iDamage);
         healthBar.UpdateSlider(this.health / this.maxHealth);
-    } 
+    }
 }

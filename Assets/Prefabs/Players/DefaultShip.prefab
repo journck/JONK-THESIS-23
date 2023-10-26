@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed2ce90885fb49eb936a248291d275d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnTimeSec: 0.7
+  turnTimeSec: 0.3
   isRotating: 0
 --- !u!61 &4601298099403982098
 BoxCollider2D:
