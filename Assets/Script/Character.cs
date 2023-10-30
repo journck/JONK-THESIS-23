@@ -19,10 +19,8 @@ public class Character : MonoBehaviour
         float damage = iDamage;
         // DO ANY DAMAGE MODIFIERS ETC HERE.
 
-        // PLAYER DIED
         if ( health - damage <= 0 )
         {
-            Debug.Log("DEAD!");
             health = 0;
             DoDeath();
         }
@@ -34,7 +32,14 @@ public class Character : MonoBehaviour
 
     public void DoDeath()
     {
-        GameManager.instance.CheckForRestart();
+        if ( this is Player )
+        {
+            GameManager.instance.CheckForRestart();
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public bool IsDead()

@@ -19,9 +19,9 @@ public class Bullet : MonoBehaviour
     }
 
     // linear projection
-    public void ProjectBullet(Vector2 direction)
+    public void ProjectBullet(Vector3 direction)
     {
-        Vector2 vel = direction.normalized * moveSpeed;
+        Vector3 vel = direction.normalized * moveSpeed;
         rigidBody.velocity = vel;
     }
 

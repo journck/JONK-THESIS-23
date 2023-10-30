@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
         players = new Player[fields.Length];
         for (int i = 0; i < fields.Length; i++)
         {
-            Debug.Log("getting player from the " + i + "th field");
             players[i] = fields[i].player;
         }
     }

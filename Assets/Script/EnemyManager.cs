@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    [Header("Inscribed")]
     public float spawnInterval = 2.5f;
+    public float spawnDistance = 10f;
+    public int maxEnemies = -1;
+    public Enemy[] enemyPrefabs;
+
+
 
     // this is the 'radius' of the square ( i.e. half of a sidelength )
-    public float spawnDistance = 10f;
+
 
     private Field parentField;
 
-    //TODO - should make this an array that I can randomly choose from
-    public Enemy enemyPrefab;
+   
 
     private void Start()
     {
-        Invoke(nameof(SpawnEnemy), spawnInterval);
         parentField = GetComponentInParent<Field>();
+        Invoke(nameof(SpawnEnemy), spawnInterval);
     }
 
     public Vector3 GetPointOnSquareEdge(float degrees)
@@ -57,13 +62,22 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-
+        if ( maxEnemies != -1 && parentField.enemyList.Count >= maxEnemies)
+        {
+            Invoke(nameof(SpawnEnemy), spawnInterval);
+            return;
+        }
         Vector3 spawnPoint = this.transform.position + GetPointOnSquareEdge(Random.value * 360);
-        Enemy createdEnemy = Instantiate(enemyPrefab, parentField.transform);
+        Enemy createdEnemy = Instantiate(GetRandomEnemy(), parentField.transform);
         createdEnemy.transform.position = spawnPoint;
 
         parentField.enemyList.Add(createdEnemy);
         
         Invoke(nameof(SpawnEnemy), spawnInterval);
+    }
+
+    Enemy GetRandomEnemy ()
+    {
+        return enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
     }
 }

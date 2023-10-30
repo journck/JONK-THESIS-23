@@ -50,24 +50,45 @@ public class PlayerMovement : MonoBehaviour
         {
             if (asteroidsMovement)
             {
-                moveX = asteroidsMovement ? 0f : -1f;
-
+                //rotate here
+            }
+            else
+            {
+                moveX = -1f;
             }
         }
         else if ( Input.GetKey( KeyCode.D ) )
         {
-            moveX = asteroidsMovement ? 0f : 1f;
+            if (asteroidsMovement)
+            {
+                //rotate here
+            }
+            moveX = 1f;
         }
 
         //vertical movement
         if ( Input.GetKey( KeyCode.W ) )
         {
-            moveX = asteroidsMovement ? Mathf.Cos(angleFacingRadians) : 1f;
-            moveY = asteroidsMovement ? Mathf.Sin(angleFacingRadians) : 0f;
+            if (asteroidsMovement)
+            {
+                moveX = Mathf.Cos(angleFacingRadians);
+                moveY = Mathf.Sin(angleFacingRadians);
+            }
+            else
+            {
+                moveY = 1f;
+            }
         }
         else if ( Input.GetKey( KeyCode.S ) )
         {
-            moveY = -1f;
+            if (asteroidsMovement)
+            {
+                //move back here
+            }
+            else
+            {
+                moveY = -1f;
+            }
         }
 
         //rotation

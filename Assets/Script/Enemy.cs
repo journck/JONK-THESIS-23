@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+    public BulletSpawner bulletSpawner;
     public float shootInterval = 1f;
-    private Vector2 playerPosition = Vector2.zero;
+    public Vector3 playerPosition = Vector2.zero;
     public float turnEasing = 0.05f;
     public float moveEasing = 0.05f;
 
     public Field parentField;
 
+    private void Awake()
+    {
+        bulletSpawner = GetComponent<BulletSpawner>();
+        Invoke(nameof(Shoot), shootInterval);
+        parentField = GetComponentInParent<Field>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Invoke(nameof(ShootAtPlayer), shootInterval);
-        parentField = GetComponentInParent<Field>();
+
     }
 
     // Update is called once per frame
@@ -32,10 +39,10 @@ public class Enemy : Character
         transform.position = Vector2.MoveTowards(transform.position, playerPosition, step);
     }
 
-    public void ShootAtPlayer()
-    {   
-        ShootAtPosition(playerPosition);
-        Invoke(nameof(ShootAtPlayer), shootInterval);
+    public void Shoot()
+    {
+        bulletSpawner.ShootBullet();
+        Invoke(nameof(Shoot), shootInterval);
     }
 
     public void ShootAtPosition( Vector2 pos)
@@ -56,8 +63,8 @@ public class Enemy : Character
         playerPosition = pos;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnDestroy()
     {
-        Collider2D testing = collision.otherCollider;
+        this.parentField.enemyList.Remove(this);
     }
 }

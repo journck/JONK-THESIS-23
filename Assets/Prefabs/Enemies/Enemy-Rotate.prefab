@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8641865576125782444}
   - component: {fileID: 8641865576125782447}
+  - component: {fileID: 6966081221751820296}
   - component: {fileID: 8641865576125782446}
   - component: {fileID: 1863540516609669254}
   - component: {fileID: 8372595719110918218}
@@ -87,6 +88,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6966081221751820296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641865576125782440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e02774dcf2a44dfbc8decb1df3b17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletColor: {r: 1, g: 0, b: 0.6906123, a: 1}
+  shouldRotatePlayer: 1
+  scale: 1
+  moveSpeed: 10
+  damage: 1
+  shootBehavior: 0
+  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  character: {fileID: 0}
 --- !u!114 &8641865576125782446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +125,9 @@ MonoBehaviour:
   moveSpeed: 2
   bulletMoveSpeed: 10
   bulletDamage: 10
+  bulletSpawner: {fileID: 0}
   shootInterval: 1
+  playerPosition: {x: 0, y: 0}
   turnEasing: 0.95
   moveEasing: 0.05
   parentField: {fileID: 0}

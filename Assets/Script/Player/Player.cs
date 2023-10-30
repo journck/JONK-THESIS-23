@@ -5,13 +5,15 @@ using UnityEngine;
 public class Player : Character
 {
     [Header("Inscribed")]
-    // interval in between bullet shots
     public float shootInterval = 1f;
     public float positionSendInterval = 1.0f;
+    public bool debugShouldShoot = true;
 
     private HealthBar healthBar;
     private Rigidbody2D rigidBody;
     private Field parentField;
+
+    [Header("Dynamic")]
     public PlayerMovement playerMovement;
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,13 @@ public class Player : Character
 
     private void Shoot()
     {
+        if (!debugShouldShoot)
+        {
+            Invoke(nameof(Shoot), shootInterval);
+            return;
+        }
+
+
         Bullet availableBullet = BulletPooling.instance.GetAvailableBullet();
 
         availableBullet.setBulletProperties(this.transform.position + this.transform.up,

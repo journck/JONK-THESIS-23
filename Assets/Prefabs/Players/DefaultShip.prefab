@@ -267,8 +267,10 @@ MonoBehaviour:
   moveSpeed: 75
   bulletMoveSpeed: 10
   bulletDamage: 10
-  shootInterval: 1
+  shootInterval: 0.25
   positionSendInterval: 1
+  debugShouldShoot: 1
+  playerMovement: {fileID: 0}
 --- !u!114 &4601298099403982108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnTimeSec: 0.3
   isRotating: 0
+  asteroidsMovement: 0
 --- !u!61 &4601298099403982098
 BoxCollider2D:
   m_ObjectHideFlags: 0
