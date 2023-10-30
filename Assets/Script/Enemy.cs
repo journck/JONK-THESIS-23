@@ -43,7 +43,7 @@ public class Enemy : Character
         Bullet bullet = BulletPooling.instance.GetAvailableBullet();
         bullet.setBulletProperties(this.transform.position + this.transform.up,
             this.transform.rotation,
-            Color.red, bulletMoveSpeed, bulletDamage);
+            Color.red, bulletMoveSpeed, bulletDamage, true);
 
         bullet.owner = this;
 

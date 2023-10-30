@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private float currentTime = 0.0f;
     public bool isRotating;
 
+    public bool asteroidsMovement = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float angleFacingRadians = this.transform.rotation.z * Mathf.Deg2Rad;
         if ( isRotating )
         {
             currentTime += Time.deltaTime;
@@ -45,17 +48,22 @@ public class PlayerMovement : MonoBehaviour
         // horizontal movement
         if ( Input.GetKey( KeyCode.A ) )
         {
-            moveX = -1f;
+            if (asteroidsMovement)
+            {
+                moveX = asteroidsMovement ? 0f : -1f;
+
+            }
         }
         else if ( Input.GetKey( KeyCode.D ) )
         {
-            moveX = 1f;
+            moveX = asteroidsMovement ? 0f : 1f;
         }
 
         //vertical movement
         if ( Input.GetKey( KeyCode.W ) )
         {
-            moveY = 1f;
+            moveX = asteroidsMovement ? Mathf.Cos(angleFacingRadians) : 1f;
+            moveY = asteroidsMovement ? Mathf.Sin(angleFacingRadians) : 0f;
         }
         else if ( Input.GetKey( KeyCode.S ) )
         {
@@ -65,18 +73,18 @@ public class PlayerMovement : MonoBehaviour
         //rotation
         if ( Input.GetKeyDown( KeyCode.Q ) )
         {
-            turnPlayer(1);
+            TurnPlayer(1);
         }
         else if ( Input.GetKeyDown( KeyCode.E ) )
         {
-            turnPlayer(-1);
+            TurnPlayer(-1);
         }
       
         moveDirection = new Vector2( moveX, moveY ).normalized;
     }
 
     // direction 1 represents left, -1 represents right
-    private void turnPlayer ( int dir )
+    public void TurnPlayer ( int dir )
     {
         //already turning
         if ( isRotating )

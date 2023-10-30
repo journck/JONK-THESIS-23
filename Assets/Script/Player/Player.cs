@@ -12,6 +12,7 @@ public class Player : Character
     private HealthBar healthBar;
     private Rigidbody2D rigidBody;
     private Field parentField;
+    public PlayerMovement playerMovement;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class Player : Character
         health = maxHealth;
         healthBar.UpdateSlider(health / maxHealth);
         parentField = GetComponentInParent<Field>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -56,7 +58,7 @@ public class Player : Character
             this.transform.rotation,
             Color.green,
             bulletMoveSpeed,
-            bulletDamage);
+            bulletDamage, false);
 
         availableBullet.owner = this;
 
@@ -69,5 +71,10 @@ public class Player : Character
     {
         base.TakeDamage(iDamage);
         healthBar.UpdateSlider(this.health / this.maxHealth);
+    }
+
+    public void randomRotate()
+    {
+
     }
 }
