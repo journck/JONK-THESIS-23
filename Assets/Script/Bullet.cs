@@ -40,7 +40,6 @@ public class Bullet : MonoBehaviour
         // player bullet hit enemy
         if ( owner is Player && hitEnemy != null )
         {
-            Debug.Log("PLAYER BULLET HIT ENEMY");
             hitEnemy.TakeDamage(this.damage);
             BulletPooling.instance.ReturnToPool(this);
             return;

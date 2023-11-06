@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 4601298099403982109}
   - component: {fileID: 4601298099403982108}
   - component: {fileID: 4601298099403982098}
+  - component: {fileID: -7888491796799273494}
   m_Layer: 6
   m_Name: DefaultShip
   m_TagString: Player
@@ -264,12 +265,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  moveSpeed: 75
+  baseMoveSpeed: 75
   bulletMoveSpeed: 10
   bulletDamage: 10
-  shootInterval: 0.25
+  baseShotsPerSecond: 0.5
   positionSendInterval: 1
   debugShouldShoot: 1
+  shotsPerSecond: 0
   playerMovement: {fileID: 0}
 --- !u!114 &4601298099403982108
 MonoBehaviour:
@@ -283,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed2ce90885fb49eb936a248291d275d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnTimeSec: 0.3
+  baseTurnTimeSec: 0.75
   isRotating: 0
   asteroidsMovement: 0
 --- !u!61 &4601298099403982098
@@ -312,6 +314,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &-7888491796799273494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601298099403982104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e02774dcf2a44dfbc8decb1df3b17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletColor: {r: 0.12834764, g: 1, b: 0, a: 1}
+  shouldRotatePlayer: 0
+  scale: 1
+  moveSpeed: 15
+  damage: 10
+  shootBehavior: 1
+  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  character: {fileID: 0}
 --- !u!1 &4601298099600530114
 GameObject:
   m_ObjectHideFlags: 0

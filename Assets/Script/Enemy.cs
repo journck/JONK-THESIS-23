@@ -35,7 +35,7 @@ public class Enemy : Character
     private void FixedUpdate()
     {
         // move towards the player
-        float step = moveSpeed * Time.deltaTime;
+        float step = baseMoveSpeed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, playerPosition, step);
     }
 
@@ -45,18 +45,18 @@ public class Enemy : Character
         Invoke(nameof(Shoot), shootInterval);
     }
 
-    public void ShootAtPosition( Vector2 pos)
-    {
-        Bullet bullet = BulletPooling.instance.GetAvailableBullet();
-        bullet.setBulletProperties(this.transform.position + this.transform.up,
-            this.transform.rotation,
-            Color.red, bulletMoveSpeed, bulletDamage, true);
+    //public void ShootAtPosition( Vector2 pos)
+    //{
+    //    Bullet bullet = BulletPooling.instance.GetAvailableBullet();
+    //    bullet.setBulletProperties(this.transform.position + this.transform.up,
+    //        this.transform.rotation,
+    //        Color.red, bulletMoveSpeed, bulletDamage, true);
 
-        bullet.owner = this;
+    //    bullet.owner = this;
 
-        // you're already looking @ the player, so you should shoot @ it.
-        bullet.ProjectBullet(this.transform.up);
-    }
+    //    // you're already looking @ the player, so you should shoot @ it.
+    //    bullet.ProjectBullet(this.transform.up);
+    //}
 
     public void ReceivePlayerPosition (Vector2 pos)
     {

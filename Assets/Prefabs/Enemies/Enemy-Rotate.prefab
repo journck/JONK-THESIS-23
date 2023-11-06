@@ -121,13 +121,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  maxHealth: 0
-  moveSpeed: 2
-  bulletMoveSpeed: 10
-  bulletDamage: 10
+  maxHealth: 10
+  baseMoveSpeed: 4
   bulletSpawner: {fileID: 0}
   shootInterval: 1
-  playerPosition: {x: 0, y: 0}
+  playerPosition: {x: 0, y: 0, z: 0}
   turnEasing: 0.95
   moveEasing: 0.05
   parentField: {fileID: 0}

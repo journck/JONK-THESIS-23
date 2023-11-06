@@ -9,9 +9,7 @@ public class Character : MonoBehaviour
     [Header("Character - Inscribed")]
     public float health;
     public float maxHealth;
-    public int moveSpeed;
-    public float bulletMoveSpeed;
-    public float bulletDamage;
+    public int baseMoveSpeed;
 
 
     public virtual void TakeDamage ( float iDamage )

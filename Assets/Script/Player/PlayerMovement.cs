@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //TODO - consolidate this into the Player class. not really a need to have this separate
+    [Header("Inscribed")]
+    public float baseTurnTimeSec = 0.75f;
 
-    public float turnTimeSec = 0.75f;
-
+    [Header("Dynamic")]
+    private float turnTimeSec;
     private Rigidbody2D rigidBody;
     private Player player;
     private Vector2 moveDirection = Vector2.zero;
@@ -15,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private Quaternion endRotation;
     private float currentTime = 0.0f;
     public bool isRotating;
+    private float moveSpeed;
 
     public bool asteroidsMovement = false;
 
@@ -30,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        moveSpeed = player.baseMoveSpeed + 1.2f * player.upgrades["moveSpeed"];
+        turnTimeSec = baseTurnTimeSec * Mathf.Pow(0.8f, player.upgrades["turnSpeed"]);
         float angleFacingRadians = this.transform.rotation.z * Mathf.Deg2Rad;
         if ( isRotating )
         {
@@ -121,6 +127,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidBody.AddForce(moveDirection.normalized * player.moveSpeed);
+        rigidBody.AddForce(moveDirection.normalized * moveSpeed);
     }
 }
