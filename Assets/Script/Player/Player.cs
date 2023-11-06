@@ -20,10 +20,14 @@ public class Player : Character
     public PlayerMovement playerMovement;
     public IDictionary<string, uint> upgrades = new Dictionary<string, uint>()
     {
-        {"shootSpeed", 10 },
-        {"moveSpeed", 100 },
-        {"turnSpeed", 5 }
+        {"shootSpeed", 1 },
+        {"moveSpeed", 1 },
+        {"turnSpeed", 1 }
     };
+    public uint level;
+    public float xp;
+
+
     // Start is called before the first frame update
     void Start()
     {

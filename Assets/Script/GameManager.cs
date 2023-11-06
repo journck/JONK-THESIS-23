@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public float difficulty;
     public static GameManager instance;
     public Player[] players;
+    public bool gamePaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -60,5 +61,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         difficulty = Mathf.Pow( diffConst * Time.timeSinceLevelLoad, diffExp);
+        if ( Input.GetKeyDown(KeyCode.Escape ) )
+        {
+            gamePaused = !gamePaused;
+            Time.timeScale = gamePaused ? 1 : 0;
+        }
     }
 }
