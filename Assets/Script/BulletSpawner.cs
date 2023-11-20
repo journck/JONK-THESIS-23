@@ -45,7 +45,8 @@ public class BulletSpawner : MonoBehaviour
     public enum ShootBehavior
     {
         ShootAtPlayer,
-        ShootForward
+        ShootForward,
+        SineWave
     };
 
     public void SetProperties( Bullet bullet )

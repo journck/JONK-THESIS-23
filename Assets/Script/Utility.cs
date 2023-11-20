@@ -3,6 +3,18 @@ using UnityEngine.Assertions;
 
 public static class Utility
 {
+    // important that this is in descending order
+    private static readonly uint[] PossibleDenominations =
+    {
+        500,
+        250,
+        100,
+        50,
+        25,
+        10,
+        5,
+        1
+    };
 
     public static Color HealthColor ( float currentHealth, float maxHealth )
     {
@@ -29,4 +41,14 @@ public static class Utility
     {
         return (10 * Mathf.Pow(1.01f, currentLevel) - 7 * Mathf.Pow(0.97f, currentLevel) - 1) * currentLevel;
     }
+
+    //// returns a dictionary with 
+    //public static Vector2[] CreateDenominations ( uint num )
+    //{
+    //    uint workingNum = num;
+    //    while ( workingNum > 0 )
+    //    {
+    //        uint fitsInto = Mathf.FloorToInt(workingNum)
+    //    }
+    //}
 }

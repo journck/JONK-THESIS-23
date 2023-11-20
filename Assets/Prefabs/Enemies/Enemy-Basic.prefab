@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e02774dcf2a44dfbc8decb1df3b17f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletColor: {r: 1, g: 0.74655265, b: 0, a: 1}
+  bulletColor: {r: 1, g: 0.74509805, b: 0, a: 1}
   shouldRotatePlayer: 0
   scale: 1
   moveSpeed: 20
