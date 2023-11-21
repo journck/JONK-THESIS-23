@@ -128,6 +128,9 @@ MonoBehaviour:
   playerPosition: {x: 0, y: 0, z: 0}
   turnEasing: 0.95
   moveEasing: 0.05
+  xpValue: 10
+  xpPrefab: {fileID: 2730037013297531433, guid: 1829ff5e47155485caf7df12eb85ca4b,
+    type: 3}
   parentField: {fileID: 0}
 --- !u!50 &1863540516609669254
 Rigidbody2D:

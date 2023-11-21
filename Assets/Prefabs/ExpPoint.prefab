@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2730037013297531435}
   - component: {fileID: 2730037013297531432}
   - component: {fileID: 2730037013297531433}
+  - component: {fileID: 8130164326383031601}
   m_Layer: 0
   m_Name: ExpPoint
   m_TagString: Untagged
@@ -98,3 +99,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5669024ec214383a767f9ed64f0ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  value: 0
+  playerRef: {fileID: 0}
+  maxSpeed: 10
+--- !u!58 &8130164326383031601
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730037013297531446}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

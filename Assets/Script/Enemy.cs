@@ -9,6 +9,9 @@ public class Enemy : Character
     public Vector3 playerPosition = Vector2.zero;
     public float turnEasing = 0.05f;
     public float moveEasing = 0.05f;
+    public float xpValue = 10f;
+
+    public ExperiencePoint xpPrefab;
 
     public Field parentField;
 
@@ -65,6 +68,11 @@ public class Enemy : Character
 
     private void OnDestroy()
     {
+        // spawning xp prefabs
+        ExperiencePoint xpPoint = Instantiate(xpPrefab);
+        xpPoint.transform.position = this.transform.position;
+        xpPoint.playerRef = parentField.player;
+        xpPoint.value = this.xpValue;
         this.parentField.enemyList.Remove(this);
     }
 }

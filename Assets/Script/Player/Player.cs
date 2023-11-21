@@ -9,11 +9,14 @@ public class Player : Character
     public float baseShotsPerSecond = 0.5f;
     public float positionSendInterval = 1.0f;
     public bool debugShouldShoot = true;
+    //maximum distance that xp points will lerp towards player
+    public float maxSuckDist = 4f;
 
     private BulletSpawner bulletSpawner;
     private HealthBar healthBar;
     private Rigidbody2D rigidBody;
     private Field parentField;
+
 
     [Header("Dynamic")]
     public float shotsPerSecond;
@@ -24,8 +27,9 @@ public class Player : Character
         {"moveSpeed", 1 },
         {"turnSpeed", 1 }
     };
-    public uint level;
+    public uint level = 0;
     public float xp;
+    public float xpForNextLevel = Utility.ExpForLevel(1);
 
 
     // Start is called before the first frame update
@@ -39,6 +43,7 @@ public class Player : Character
         parentField = GetComponentInParent<Field>();
         playerMovement = GetComponent<PlayerMovement>();
         bulletSpawner = GetComponent<BulletSpawner>();
+        
     }
 
     // Update is called once per frame
@@ -55,6 +60,9 @@ public class Player : Character
             shotsPerSecond /= 2;
             bulletSpawner.moveSpeed /= 2;
         }
+
+        Vector3 debugCircleVector = new Vector3 ( maxSuckDist, 0, 0 );
+        Debug.DrawLine(this.transform.position, this.transform.position + debugCircleVector, Color.red, Time.deltaTime);
     }
 
 
@@ -84,5 +92,21 @@ public class Player : Character
     {
         base.TakeDamage(iDamage);
         healthBar.UpdateSlider(this.health / this.maxHealth);
+    }
+
+    public void GainXP ( float value )
+    {
+        Debug.Log("gained " + value + " exp");
+        this.xp += value;
+        if ( this.xp >= xpForNextLevel )
+        {
+            GainLevel();
+        }
+    }
+
+    public void GainLevel ()
+    {
+        this.level++;
+        xpForNextLevel = Utility.ExpForLevel(this.level + 1);
     }
 }
