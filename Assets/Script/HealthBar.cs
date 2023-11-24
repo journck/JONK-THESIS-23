@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Slider slider;
+    public Image img;
 
     // Start is called before the first frame update
     void Awake()
     {
-        slider = GetComponent<Slider>();
+        img = GetComponent<Image>();
     }
 
-    public void UpdateSlider( float val )
+    public void UpdateImg( float val )
     {
-        slider.value = val;
+        img.fillAmount = val;
     }
 }

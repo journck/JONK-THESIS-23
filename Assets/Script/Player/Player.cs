@@ -37,10 +37,12 @@ public class Player : Character
     {
         Invoke(nameof(Shoot), 1);
         Invoke(nameof(SendPositionToEnemies), positionSendInterval);
-        healthBar = GetComponentInChildren<HealthBar>();
         health = maxHealth;
-        healthBar.UpdateSlider(health / maxHealth);
         parentField = GetComponentInParent<Field>();
+        healthBar = parentField.healthBar;
+        healthBar.UpdateImg(health / maxHealth);
+
+
         playerMovement = GetComponent<PlayerMovement>();
         bulletSpawner = GetComponent<BulletSpawner>();
         
@@ -91,7 +93,7 @@ public class Player : Character
     public override void TakeDamage(float iDamage)
     {
         base.TakeDamage(iDamage);
-        healthBar.UpdateSlider(this.health / this.maxHealth);
+        healthBar.UpdateImg(this.health / this.maxHealth);
     }
 
     public void GainXP ( float value )

@@ -7,6 +7,8 @@ public class Field : MonoBehaviour
     [Header("Inscribed")]
     public Player[] players;
     public FollowCam cam;
+    public HealthBar healthBar;
+
 
     [Header("Dynamic")]
     public List<Enemy> enemyList;
@@ -16,6 +18,7 @@ public class Field : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log(healthBar);
         Player playerPrefab = players[Random.Range(0, players.Length)];
         player = Instantiate(playerPrefab, this.transform);
         player.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 4) * 90);
