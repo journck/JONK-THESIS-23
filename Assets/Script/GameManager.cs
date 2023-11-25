@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour
         {
             players[i] = fields[i].player;
         }
+
+        for ( uint i = 0; i < 10; i++)
+        {
+            Debug.Log(Utility.ExpForLevel(i));
+        }
     }
 
     public void CheckForRestart()
@@ -62,6 +67,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         difficulty = Mathf.Pow( diffConst * Time.timeSinceLevelLoad, diffExp);
+        //Debug.Log(difficulty);
         if ( Input.GetKeyDown(KeyCode.Escape ) )
         {
             gamePaused = !gamePaused;
@@ -70,11 +76,16 @@ public class GameManager : MonoBehaviour
 
         if ( Input.GetKeyDown(KeyCode.Space))
         {
-            foreach (Field f in fields)
-            {
-                Utility.SetActiveGOAndChildren(f.gameObject, fieldsPaused);
-            }
+            //foreach (Field f in fields)
+            //{
+            //    Utility.SetActiveGOAndChildren(f.gameObject, fieldsPaused);
+            //}
+
+            Utility.SetActiveGOAndChildren(fields[1].gameObject, fieldsPaused);
+
             fieldsPaused = !fieldsPaused;
         }
     }
+
+    
 }

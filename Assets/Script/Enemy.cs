@@ -9,7 +9,7 @@ public class Enemy : Character
     public Vector3 playerPosition = Vector2.zero;
     public float turnEasing = 0.05f;
     public float moveEasing = 0.05f;
-    public float xpValue = 10f;
+    private float xpValue = GameManager.instance.difficulty;
 
     public ExperiencePoint xpPrefab;
 
@@ -65,13 +65,19 @@ public class Enemy : Character
         playerPosition = pos;
     }
 
-    private void OnDestroy()
+    public override void DoDeath()
     {
         // spawning xp prefabs
         ExperiencePoint xpPoint = Instantiate(xpPrefab);
         xpPoint.transform.position = this.transform.position;
         xpPoint.playerRef = parentField.player;
         xpPoint.value = this.xpValue;
+
+        base.DoDeath();
+    }
+
+    private void OnDestroy()
+    {
         this.parentField.enemyList.Remove(this);
     }
 }

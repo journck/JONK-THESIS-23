@@ -7,7 +7,8 @@ public class Field : MonoBehaviour
     [Header("Inscribed")]
     public Player[] players;
     public FollowCam cam;
-    public HealthBar healthBar;
+    public Bar healthBar;
+    public Bar expBar;
 
 
     [Header("Dynamic")]

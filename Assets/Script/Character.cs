@@ -30,7 +30,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void DoDeath()
+    public virtual void DoDeath()
     {
         if ( this is Player )
         {

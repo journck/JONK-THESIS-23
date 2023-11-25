@@ -13,7 +13,9 @@ public class Player : Character
     public float maxSuckDist = 4f;
 
     private BulletSpawner bulletSpawner;
-    private HealthBar healthBar;
+    private Bar healthBar;
+    private Bar expBar;
+
     private Rigidbody2D rigidBody;
 
     [Header("Dynamic")]
@@ -27,8 +29,10 @@ public class Player : Character
     };
     public uint level = 0;
     public float xp;
-    public float xpForNextLevel = Utility.ExpForLevel(1);
-
+    public float xpForNextLevel {
+        get { return Utility.ExpForLevel(this.level + 1); }
+        set { }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +43,8 @@ public class Player : Character
         parentField = GetComponentInParent<Field>();
         healthBar = parentField.healthBar;
         healthBar.UpdateImg(health / maxHealth);
+        expBar = parentField.expBar;
+        expBar.UpdateImg(0);
 
 
         playerMovement = GetComponent<PlayerMovement>();
@@ -98,15 +104,12 @@ public class Player : Character
     {
         Debug.Log("gained " + value + " exp");
         this.xp += value;
-        if ( this.xp >= xpForNextLevel )
+        while ( this.xp >= xpForNextLevel )
         {
-            GainLevel();
+            this.level++;
+            Debug.Log("Level Up!");
         }
-    }
-
-    public void GainLevel ()
-    {
-        this.level++;
-        xpForNextLevel = Utility.ExpForLevel(this.level + 1);
+        float progress = this.xp / this.xpForNextLevel;
+        expBar.UpdateImg(progress);
     }
 }
