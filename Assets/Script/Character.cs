@@ -10,6 +10,8 @@ public class Character : MonoBehaviour
     public float health;
     public float maxHealth;
     public int baseMoveSpeed;
+    public Field parentField;
+
 
 
     public virtual void TakeDamage ( float iDamage )

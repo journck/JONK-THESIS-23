@@ -10,6 +10,7 @@ public class BulletPooling : MonoBehaviour
     public Bullet bulletPrefab;
     public List<Bullet> bulletPool;
     public int initialSize = 20;
+    public Vector3 cachedVelocity;
 
 
     private void Awake()
@@ -57,7 +58,6 @@ public class BulletPooling : MonoBehaviour
 
     public void ReturnToPool( Bullet bullet )
     {
-        //TODO - there's gotta be a better way to do this man
         bullet.gameObject.SetActive(false);
     }
 }

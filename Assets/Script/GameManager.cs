@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Player[] players;
     public bool gamePaused = false;
+    public bool fieldsPaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour
     // called when all players die
     void RestartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Main");
     }
 
     // Update is called once per frame
@@ -65,6 +66,15 @@ public class GameManager : MonoBehaviour
         {
             gamePaused = !gamePaused;
             Time.timeScale = gamePaused ? 1 : 0;
+        }
+
+        if ( Input.GetKeyDown(KeyCode.Space))
+        {
+            foreach (Field f in fields)
+            {
+                Utility.SetActiveGOAndChildren(f.gameObject, fieldsPaused);
+            }
+            fieldsPaused = !fieldsPaused;
         }
     }
 }

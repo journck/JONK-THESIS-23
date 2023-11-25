@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634939574258214300}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInterval: 2.5
   spawnDistance: 11
+  maxEnemies: -1
   enemyPrefabs:
   - {fileID: 8641865576125782446, guid: 6c02e3383088b4449b07eba4bbd83002, type: 3}
   - {fileID: 8641865576125782446, guid: 406eac7fae6c0446aa59602519878dc5, type: 3}
+  canSpawn: 1

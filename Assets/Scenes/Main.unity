@@ -303,6 +303,7 @@ MonoBehaviour:
   enemyList: []
   player: {fileID: 0}
   enemyManager: {fileID: 0}
+  fieldPaused: 0
 --- !u!4 &66784719
 Transform:
   m_ObjectHideFlags: 0
@@ -1615,7 +1616,7 @@ PrefabInstance:
     - target: {fileID: 634939574258214291, guid: 76245c8aa264641e987e16ab5469f100,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 634939574258214291, guid: 76245c8aa264641e987e16ab5469f100,
         type: 3}
@@ -1733,6 +1734,7 @@ MonoBehaviour:
   enemyList: []
   player: {fileID: 0}
   enemyManager: {fileID: 0}
+  fieldPaused: 0
 --- !u!1 &882169944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,6 +2124,7 @@ MonoBehaviour:
   enemyList: []
   player: {fileID: 0}
   enemyManager: {fileID: 0}
+  fieldPaused: 0
 --- !u!1 &972184076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,6 +2329,7 @@ MonoBehaviour:
     type: 3}
   bulletPool: []
   initialSize: 20
+  cachedVelocity: {x: 0, y: 0, z: 0}
 --- !u!4 &1002727861
 Transform:
   m_ObjectHideFlags: 0
@@ -2361,6 +2365,7 @@ MonoBehaviour:
   difficulty: 0
   players: []
   gamePaused: 0
+  fieldsPaused: 0
 --- !u!1 &1011475230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3583,6 +3588,7 @@ MonoBehaviour:
   enemyList: []
   player: {fileID: 0}
   enemyManager: {fileID: 0}
+  fieldPaused: 0
 --- !u!4 &1566340375
 Transform:
   m_ObjectHideFlags: 0
@@ -4485,7 +4491,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4710,6 +4716,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 489073683}
     m_Modifications:
+    - target: {fileID: 634939574258214290, guid: 76245c8aa264641e987e16ab5469f100,
+        type: 3}
+      propertyPath: maxEnemies
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 634939574258214291, guid: 76245c8aa264641e987e16ab5469f100,
         type: 3}
       propertyPath: m_RootOrder

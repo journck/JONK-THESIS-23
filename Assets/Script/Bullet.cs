@@ -11,6 +11,9 @@ public class Bullet : MonoBehaviour
     public float knockbackMultiplier = 400f;
     private Rigidbody2D rigidBody;
     public bool shouldRotate;
+    public Vector2 cachedVelocity;
+    public bool isPaused = false;
+    public Field parentField;
 
 
     private void Awake()
@@ -18,10 +21,40 @@ public class Bullet : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
+    private void Update()
+    {
+        if ( parentField != null )
+        {
+            // need to pause the bullet to match the field.
+
+            if ( !isPaused && parentField.fieldPaused )
+            {
+                 Debug.Log("pausing bullet " + Time.time);
+                 PauseBullet();
+                 return;
+            }
+            if (isPaused)
+            {
+                // wait to get unpaused
+                if (parentField.fieldPaused)
+                {
+                    Debug.Log("waiting to get unpaused");
+                    return;
+                }
+                else if ( !parentField.fieldPaused )
+                {
+                    Debug.Log("resuming bullet" + Time.time);
+                    ResumeBullet();
+                }
+            }
+        }
+    }
+
     // linear projection
     public void ProjectBullet(Vector3 direction)
     {
         Vector3 vel = direction.normalized * moveSpeed;
+        //Debug.Log("projecting bullet");
         rigidBody.velocity = vel;
     }
 
@@ -74,5 +107,56 @@ public class Bullet : MonoBehaviour
         this.moveSpeed = moveSpeed;
         this.damage = damage;
         this.shouldRotate = shouldRotate;
+    }
+
+    //public void SetActiveBullet(bool boolean)
+    //{
+    //    if ( boolean )
+    //    {
+    //        ResumeBullet();
+    //    }
+    //    else
+    //    {
+    //        PauseBullet();
+    //    }
+    //}
+
+    public void PauseBullet ()
+    {
+        if (isPaused)
+            return;
+
+
+        cachedVelocity = this.rigidBody.velocity;
+        Debug.Log(" freezing this bullet and caching " + cachedVelocity.ToString());
+        this.rigidBody.velocity = Vector2.zero;
+        isPaused = true;
+    }
+
+    public void ResumeBullet()
+    {
+        if (!isPaused)
+            return;
+
+
+
+        if ( cachedVelocity == null)
+        {
+            Debug.LogError("cachedVelocity for " + this.gameObject + " is null.");
+        }
+
+        this.rigidBody.velocity = cachedVelocity;
+        Debug.Log("cachedVelocity " + cachedVelocity.ToString() + " this velocity " + this.rigidBody.velocity);
+        isPaused = false;
+    }
+
+    private void OnEnable()
+    {
+        isPaused = false;
+    }
+
+    private void OnDisable()
+    {
+        isPaused = true;
     }
 }

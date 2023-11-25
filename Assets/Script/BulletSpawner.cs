@@ -14,6 +14,7 @@ public class BulletSpawner : MonoBehaviour
     [Header("Dynamic")]
     public Quaternion spawnRotation;
     public Character character;
+    public bool canShoot = true;
 
     void Start()
     {
@@ -22,6 +23,8 @@ public class BulletSpawner : MonoBehaviour
 
     public void ShootBullet()
     {
+        if (!canShoot)
+            return;
         Bullet bullet = BulletPooling.instance.GetAvailableBullet();
         SetProperties(bullet);
         switch ( shootBehavior )
@@ -58,5 +61,16 @@ public class BulletSpawner : MonoBehaviour
         bullet.damage = this.damage;
         bullet.shouldRotate = shouldRotatePlayer;
         bullet.transform.SetPositionAndRotation(this.transform.position, this.spawnRotation);
+        bullet.parentField = character.parentField;
+    }
+
+    private void OnEnable()
+    {
+        canShoot = true;
+    }
+
+    private void OnDisable()
+    {
+        canShoot = false;
     }
 }

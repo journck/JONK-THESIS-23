@@ -14,6 +14,7 @@ public class Field : MonoBehaviour
     public List<Enemy> enemyList;
     public Player player;
     public EnemyManager enemyManager;
+    public bool fieldPaused;
 
 
     void Awake()
@@ -31,5 +32,15 @@ public class Field : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnEnable()
+    {
+        fieldPaused = false;
+    }
+
+    private void OnDisable()
+    {
+        fieldPaused = true;
     }
 }

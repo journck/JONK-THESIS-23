@@ -51,4 +51,23 @@ public static class Utility
     //        uint fitsInto = Mathf.FloorToInt(workingNum)
     //    }
     //}
+
+    public static void SetActiveGOAndChildren(GameObject go, bool boolean)
+    {
+        if (go == null)
+            return;
+
+        
+
+        for ( int i = 0; i < go.transform.childCount; i++)
+        {
+            GameObject childGO = go.transform.GetChild(i).gameObject;
+            Utility.SetActiveGOAndChildren(childGO, boolean);
+            //Debug.Log("SetActiveGOAndChildren Child #" + i);
+        }
+
+        go.SetActive(boolean);
+
+        //Debug.Log("Done setting this gameObject and its children to " + boolean);
+    }
 }

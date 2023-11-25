@@ -9,13 +9,10 @@ public class EnemyManager : MonoBehaviour
     public float spawnDistance = 10f;
     public int maxEnemies = -1;
     public Enemy[] enemyPrefabs;
-
-
-
-    // this is the 'radius' of the square ( i.e. half of a sidelength )
-
-
     private Field parentField;
+
+    [Header("Dynamic")]
+    public bool canSpawn = true;
 
    
 
@@ -67,6 +64,13 @@ public class EnemyManager : MonoBehaviour
             Invoke(nameof(SpawnEnemy), spawnInterval);
             return;
         }
+
+        if (!canSpawn)
+        {
+            Invoke(nameof(SpawnEnemy), spawnInterval);
+            return;
+        }
+
         Vector3 spawnPoint = this.transform.position + GetPointOnSquareEdge(Random.value * 360);
         Enemy createdEnemy = Instantiate(GetRandomEnemy(), parentField.transform);
         createdEnemy.transform.position = spawnPoint;
@@ -74,6 +78,16 @@ public class EnemyManager : MonoBehaviour
         parentField.enemyList.Add(createdEnemy);
         
         Invoke(nameof(SpawnEnemy), spawnInterval);
+    }
+
+    private void OnEnable()
+    {
+        canSpawn = true;
+    }
+
+    private void OnDisable()
+    {
+        canSpawn = false;
     }
 
     Enemy GetRandomEnemy ()

@@ -15,8 +15,6 @@ public class Player : Character
     private BulletSpawner bulletSpawner;
     private HealthBar healthBar;
     private Rigidbody2D rigidBody;
-    private Field parentField;
-
 
     [Header("Dynamic")]
     public float shotsPerSecond;

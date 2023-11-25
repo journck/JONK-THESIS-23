@@ -13,7 +13,6 @@ public class Enemy : Character
 
     public ExperiencePoint xpPrefab;
 
-    public Field parentField;
 
     private void Awake()
     {
