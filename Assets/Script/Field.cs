@@ -9,6 +9,7 @@ public class Field : MonoBehaviour
     public FollowCam cam;
     public Bar healthBar;
     public Bar expBar;
+    public UpgradeScreen upgradeScreen;
 
 
     [Header("Dynamic")]

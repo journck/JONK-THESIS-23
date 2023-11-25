@@ -104,12 +104,24 @@ public class Player : Character
     {
         Debug.Log("gained " + value + " exp");
         this.xp += value;
-        while ( this.xp >= xpForNextLevel )
+        if ( this.xp >= xpForNextLevel )
         {
-            this.level++;
-            Debug.Log("Level Up!");
+            GainLevel();
         }
         float progress = this.xp / this.xpForNextLevel;
         expBar.UpdateImg(progress);
+    }
+
+    public void GainLevel ()
+    {
+        while ( this.xp >= xpForNextLevel)
+        {
+            this.level++;
+            Debug.Log ("level up");
+        }
+
+        //show upgrade screen and options here.
+        Utility.SetActiveGOAndChildren(this.parentField.gameObject, false);
+        parentField.upgradeScreen.gameObject.SetActive(true);
     }
 }
