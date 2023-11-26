@@ -102,7 +102,7 @@ public class Player : Character
 
     public void GainXP ( float value )
     {
-        Debug.Log("gained " + value + " exp");
+        //Debug.Log("gained " + value + " exp");
         this.xp += value;
         if ( this.xp >= xpForNextLevel )
         {
@@ -117,7 +117,7 @@ public class Player : Character
         while ( this.xp >= xpForNextLevel)
         {
             this.level++;
-            Debug.Log ("level up");
+            //Debug.Log ("level up");
         }
 
         //show upgrade screen and options here.

@@ -9,8 +9,7 @@ public class Enemy : Character
     public Vector3 playerPosition = Vector2.zero;
     public float turnEasing = 0.05f;
     public float moveEasing = 0.05f;
-    private float xpValue = GameManager.instance.difficulty;
-
+    private float xpValue = 0f;
     public ExperiencePoint xpPrefab;
 
 
@@ -24,7 +23,8 @@ public class Enemy : Character
     // Start is called before the first frame update
     void Start()
     {
-
+   
+        xpValue = GameManager.instance.difficulty;
     }
 
     // Update is called once per frame

@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
 
             if ( !isPaused && parentField.fieldPaused )
             {
-                 Debug.Log("pausing bullet " + Time.time);
+                 //Debug.Log("pausing bullet " + Time.time);
                  PauseBullet();
                  return;
             }
@@ -38,12 +38,12 @@ public class Bullet : MonoBehaviour
                 // wait to get unpaused
                 if (parentField.fieldPaused)
                 {
-                    Debug.Log("waiting to get unpaused");
+                    //Debug.Log("waiting to get unpaused");
                     return;
                 }
                 else if ( !parentField.fieldPaused )
                 {
-                    Debug.Log("resuming bullet" + Time.time);
+                    //Debug.Log("resuming bullet" + Time.time);
                     ResumeBullet();
                 }
             }
@@ -128,7 +128,7 @@ public class Bullet : MonoBehaviour
 
 
         cachedVelocity = this.rigidBody.velocity;
-        Debug.Log(" freezing this bullet and caching " + cachedVelocity.ToString());
+        //Debug.Log(" freezing this bullet and caching " + cachedVelocity.ToString());
         this.rigidBody.velocity = Vector2.zero;
         isPaused = true;
     }
@@ -146,7 +146,7 @@ public class Bullet : MonoBehaviour
         }
 
         this.rigidBody.velocity = cachedVelocity;
-        Debug.Log("cachedVelocity " + cachedVelocity.ToString() + " this velocity " + this.rigidBody.velocity);
+        //Debug.Log("cachedVelocity " + cachedVelocity.ToString() + " this velocity " + this.rigidBody.velocity);
         isPaused = false;
     }
 

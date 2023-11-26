@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        difficulty = Mathf.Pow( diffConst * Time.timeSinceLevelLoad, diffExp);
+        difficulty = Mathf.Pow( diffConst * Time.timeSinceLevelLoad * 10, diffExp);
         //Debug.Log(difficulty);
         if ( Input.GetKeyDown(KeyCode.Escape ) )
         {
@@ -81,9 +81,14 @@ public class GameManager : MonoBehaviour
             //    Utility.SetActiveGOAndChildren(f.gameObject, fieldsPaused);
             //}
 
-            Utility.SetActiveGOAndChildren(fields[1].gameObject, fieldsPaused);
+            //Utility.SetActiveGOAndChildren(fields[1].gameObject, fieldsPaused);
 
-            fieldsPaused = !fieldsPaused;
+            //fieldsPaused = !fieldsPaused;
+
+            foreach ( Field f in fields)
+            {
+                f.player.GainXP(1000);
+            }
         }
     }
 
