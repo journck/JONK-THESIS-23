@@ -21,6 +21,7 @@ public class Player : Character
     [Header("Dynamic")]
     public float shotsPerSecond;
     public PlayerMovement playerMovement;
+    public bool activeAbility = false;
     public IDictionary<string, uint> upgrades = new Dictionary<string, uint>()
     {
         {"shootSpeed", 1 },
@@ -33,6 +34,10 @@ public class Player : Character
         get { return Utility.ExpForLevel(this.level + 1); }
         set { }
     }
+
+
+    const float shotsMultiplier = 1.2f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,20 +60,22 @@ public class Player : Character
     // Update is called once per frame
     void Update()
     {
-        shotsPerSecond = baseShotsPerSecond + 1.2f * upgrades["shootSpeed"];
+        //TODO - make this not recalculated more than it needs to
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            shotsPerSecond *= 2;
-            bulletSpawner.moveSpeed *= 2;
+            activeAbility = true;
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            shotsPerSecond /= 2;
-            bulletSpawner.moveSpeed /= 2;
+            activeAbility = false;
         }
+        int abilityScalar = activeAbility ? 2 : 1;
+        shotsPerSecond = abilityScalar * (baseShotsPerSecond + shotsMultiplier * upgrades["shootSpeed"]);
+        
 
-        Vector3 debugCircleVector = new Vector3 ( maxSuckDist, 0, 0 );
-        Debug.DrawLine(this.transform.position, this.transform.position + debugCircleVector, Color.red, Time.deltaTime);
+        //Vector3 debugCircleVector = new Vector3 ( maxSuckDist, 0, 0 );
+        //Debug.DrawLine(this.transform.position, this.transform.position + debugCircleVector, Color.red, Time.deltaTime);
     }
 
 
@@ -123,5 +130,10 @@ public class Player : Character
         //show upgrade screen and options here.
         Utility.SetActiveGOAndChildren(this.parentField.gameObject, false);
         parentField.upgradeScreen.gameObject.SetActive(true);
+    }
+
+    private void OnEnable()
+    {
+        activeAbility = false;
     }
 }

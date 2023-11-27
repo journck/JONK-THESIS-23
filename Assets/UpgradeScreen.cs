@@ -13,6 +13,7 @@ public class UpgradeScreen : MonoBehaviour
     public TMP_Text levelTextRef;
     public TMP_Text titleTextRef;
     public TMP_Text descTextRef;
+    public Image timeLeft;
 
     //represents all of the possible upgrades that could be chosen;
     public List<Upgrade> upgradeOptionPrefabs;
@@ -21,6 +22,12 @@ public class UpgradeScreen : MonoBehaviour
     public Upgrade[] upgrades;
 
     [Header("Dynamic")]
+    private float birthTime;
+    private float finishTime;
+
+
+    const int SPACING = 150;
+    const float duration = 5f;
 
 
     // I feel like there's gotta be a better way to do this
@@ -52,18 +59,18 @@ public class UpgradeScreen : MonoBehaviour
     }
 
 
-    const int SPACING = 150;
 
     // Start is called before the first frame update
     void Start()
     {
         //Debug.Assert(upgrades.Length <= upgradeOptions.Count);
-        _selectedUpgradeIndex = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        float elapsedTime = Time.time - birthTime;
+        timeLeft.fillAmount = 1f - (elapsedTime / duration);
         if ( Input.GetKeyDown(KeyCode.Q) )
         {
             IncrementUpgradeIndex(false);
@@ -72,26 +79,29 @@ public class UpgradeScreen : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.E))
         {
             IncrementUpgradeIndex(true);
-
         }
     }
 
     void UpdateText(Upgrade selected)
     {
+        titleTextRef.color = descTextRef.color = selected.badUpgrade
+            ? Color.red : Color.black;
+        titleTextRef.fontStyle = descTextRef.fontStyle = selected.badUpgrade
+            ? FontStyles.Bold : FontStyles.Normal;
+
         titleTextRef.text = selected.title;
         descTextRef.text = selected.description;
     }
 
-
     void GenerateUpgrades()
     {
-        Debug.Log("generating upgrades");
+        //Debug.Log("generating upgrades");
         int upgradeCount = upgrades.Length;
         foreach ( Upgrade upgrade in upgrades)
         {
             if (upgrade == null)
             {
-                Debug.Log("this is null");
+                //Debug.Log("this is null");
                 break;
             }
             Destroy(upgrade.gameObject);
@@ -99,34 +109,39 @@ public class UpgradeScreen : MonoBehaviour
 
 
         List<Upgrade> workingList = new List<Upgrade>(upgradeOptionPrefabs);
-        Debug.Log(workingList.Count);
         for ( int i = 0; i < upgradeCount; i++ )
         {
-            Debug.Log("in for loop");
+            //Debug.Log("in for loop");
             int randomIndex = Random.Range(0, workingList.Count);
             Upgrade instantiatedUpgrade = Instantiate(workingList[randomIndex], this.transform);
             Vector3 drawLocation = new Vector3(SPACING * (i - 1), 0, 0);
-            Debug.Log("drawing the " + i + " upgrade at " + drawLocation.ToString());
+            //Debug.Log("drawing the " + i + " upgrade at " + drawLocation.ToString());
             instantiatedUpgrade.transform.localPosition = drawLocation;
             upgrades[i] = instantiatedUpgrade;
+            instantiatedUpgrade.parentScreen = this;
             //Debug.Log("instantiating upgrade");
 
             //making sure same upgrade can't be displayed twice
             workingList.RemoveAt(randomIndex);
         }
+        SelectedUpgradeIndex = Random.Range(0, upgrades.Length);
         //Debug.Log("should show upgrades here");
     }
 
     private void OnEnable()
     {
+        birthTime = Time.time;
+        finishTime = duration + birthTime;
         levelTextRef.text = "Level Up! You are now level " + parentField.player.level;
         GenerateUpgrades();
 
-        Invoke(nameof(ReturnToGame), 10);
+        Invoke(nameof(ReturnToGame), duration);
     }
 
     private void ReturnToGame()
     {
+        Debug.Assert(_selectedUpgrade != null);
+        _selectedUpgrade.upgradeEvent.Invoke();
         this.gameObject.SetActive(false);
     }
 
@@ -153,7 +168,7 @@ public class UpgradeScreen : MonoBehaviour
         {
             intermediate = 0;
         }
-        Debug.Log("old was " + cachedPos + " new is " + intermediate);
+        //Debug.Log("old was " + cachedPos + " new is " + intermediate);
         SelectedUpgradeIndex = intermediate;
     }
 }

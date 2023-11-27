@@ -120,12 +120,22 @@ PrefabInstance:
     - target: {fileID: 1616222066899805690, guid: 2d2703c4f06294221997f1eda11f1f80,
         type: 3}
       propertyPath: title
-      value: Pink
+      value: Running Shoes
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616222066899805690, guid: 2d2703c4f06294221997f1eda11f1f80,
+        type: 3}
+      propertyPath: attribute
+      value: moveSpeed
       objectReference: {fileID: 0}
     - target: {fileID: 1616222066899805690, guid: 2d2703c4f06294221997f1eda11f1f80,
         type: 3}
       propertyPath: description
-      value: This is pink.
+      value: Increases your movement speed.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616222066899805690, guid: 2d2703c4f06294221997f1eda11f1f80,
+        type: 3}
+      propertyPath: upgradeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: moveSpeed
       objectReference: {fileID: 0}
     - target: {fileID: 5822955258858601195, guid: 2d2703c4f06294221997f1eda11f1f80,
         type: 3}

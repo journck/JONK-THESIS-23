@@ -34,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveSpeed = player.baseMoveSpeed + 1.2f * player.upgrades["moveSpeed"];
+        int abilityScalar = player.activeAbility ? 2 : 1;
+        moveSpeed = abilityScalar * (player.baseMoveSpeed + 1.2f * player.upgrades["moveSpeed"]);
         turnTimeSec = baseTurnTimeSec * Mathf.Pow(0.8f, player.upgrades["turnSpeed"]);
         float angleFacingRadians = this.transform.rotation.z * Mathf.Deg2Rad;
         if ( isRotating )
