@@ -33,6 +33,7 @@ public class UpgradeScreen : MonoBehaviour
         {
             _selectedUpgradeIndex = value;
             SelectedUpgrade = upgrades[value];
+            Debug.Assert(SelectedUpgrade != null);
         }
     }
     public Upgrade _selectedUpgrade;
@@ -40,7 +41,10 @@ public class UpgradeScreen : MonoBehaviour
     {
         get { return _selectedUpgrade; }
         set {
-            _selectedUpgrade.IsSelected = false;
+            if ( _selectedUpgrade != null)
+            {
+                _selectedUpgrade.IsSelected = false;
+            }
             _selectedUpgrade = value;
             _selectedUpgrade.IsSelected = true;
             UpdateText(_selectedUpgrade);
@@ -85,12 +89,17 @@ public class UpgradeScreen : MonoBehaviour
         int upgradeCount = upgrades.Length;
         foreach ( Upgrade upgrade in upgrades)
         {
+            if (upgrade == null)
+            {
+                Debug.Log("this is null");
+                break;
+            }
             Destroy(upgrade.gameObject);
-            Debug.Log(upgrades.Length);
         }
 
 
-        List<Upgrade> workingList = upgradeOptionPrefabs;
+        List<Upgrade> workingList = new List<Upgrade>(upgradeOptionPrefabs);
+        Debug.Log(workingList.Count);
         for ( int i = 0; i < upgradeCount; i++ )
         {
             Debug.Log("in for loop");
