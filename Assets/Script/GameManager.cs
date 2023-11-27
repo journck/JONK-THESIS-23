@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
             {
                 return;
             }
+            Utility.SetActiveGOAndChildren(p.parentField.gameObject, false);
         }
         RestartGame();
     }   
@@ -60,7 +61,7 @@ public class GameManager : MonoBehaviour
     // called when all players die
     void RestartGame()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Title");
     }
 
     // Update is called once per frame

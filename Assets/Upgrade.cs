@@ -29,6 +29,7 @@ public class Upgrade : MonoBehaviour
         get { return _isSelected; }
         set {
             _isSelected = value;
+            outline.effectColor = badUpgrade ? Color.red : Color.black;
             outline.enabled = value;
             //Debug.Log(value);
         }
@@ -50,11 +51,6 @@ public class Upgrade : MonoBehaviour
     void Update()
     {
 
-    }
-
-    public void test(string text)
-    {
-        Debug.Log(text);
     }
 
     public void IncreasePlayerStat(string attribute)

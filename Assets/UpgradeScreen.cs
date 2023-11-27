@@ -86,8 +86,7 @@ public class UpgradeScreen : MonoBehaviour
     {
         titleTextRef.color = descTextRef.color = selected.badUpgrade
             ? Color.red : Color.black;
-        titleTextRef.fontStyle = descTextRef.fontStyle = selected.badUpgrade
-            ? FontStyles.Bold : FontStyles.Normal;
+        titleTextRef.fontStyle = descTextRef.fontStyle = FontStyles.Bold;
 
         titleTextRef.text = selected.title;
         descTextRef.text = selected.description;
