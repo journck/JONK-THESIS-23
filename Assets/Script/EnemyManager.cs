@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [Header("Inscribed")]
-    public float spawnInterval = 2.5f;
     public float spawnDistance = 10f;
     public int maxEnemies = -1;
     public Enemy[] enemyPrefabs;
@@ -13,13 +12,27 @@ public class EnemyManager : MonoBehaviour
 
     [Header("Dynamic")]
     public bool canSpawn = true;
-
-   
+    public float enemiesPerSecond
+    {
+        get {
+            float a = 0.00004f;
+            float b = 0.003f;
+            float c = 0.1f;
+            float val = Mathf.Pow(a * Time.timeSinceLevelLoad, 2) + b * Time.timeSinceLevelLoad + c;
+            //float val = 0.05f * Time.timeSinceLevelLoad + 0.5f;
+            Debug.Log(val);
+            return val;
+        }
+    }
+    public float spawnInterval
+    {   
+        get { return (1 / enemiesPerSecond); }
+    }
 
     private void Start()
     {
         parentField = GetComponentInParent<Field>();
-        Invoke(nameof(SpawnEnemy), spawnInterval);
+        Invoke(nameof(SpawnEnemy), 0.5f);
     }
 
     public Vector3 GetPointOnSquareEdge(float degrees)

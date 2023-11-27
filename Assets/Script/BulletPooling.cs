@@ -51,8 +51,8 @@ public class BulletPooling : MonoBehaviour
         Bullet newBullet = Instantiate(bulletPrefab);
         newBullet.gameObject.SetActive(true);
         bulletPool.Add(newBullet);
-        Debug.Log("bulletPool is full: adding another. current size:"
-            + bulletPool.Count);
+        //Debug.Log("bulletPool is full: adding another. current size:"
+        //    + bulletPool.Count);
         return newBullet;
     }
 

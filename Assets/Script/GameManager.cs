@@ -39,10 +39,10 @@ public class GameManager : MonoBehaviour
             players[i] = fields[i].player;
         }
 
-        for ( uint i = 0; i < 10; i++)
-        {
-            Debug.Log(Utility.ExpForLevel(i));
-        }
+        //for ( uint i = 0; i < 10; i++)
+        //{
+        //    Debug.Log(Utility.ExpForLevel(i));
+        //}
     }
 
     public void CheckForRestart()
@@ -61,13 +61,14 @@ public class GameManager : MonoBehaviour
     // called when all players die
     void RestartGame()
     {
+        Debug.Log("The size of the bullet pool @ the end of the game is " + BulletPooling.instance.bulletPool.Count);
         SceneManager.LoadScene("Title");
     }
 
     // Update is called once per frame
     void Update()
     {
-        difficulty = Mathf.Pow( diffConst * Time.timeSinceLevelLoad * 10, diffExp);
+        difficulty = Mathf.Pow(diffConst * Time.timeSinceLevelLoad * 3, diffExp);
         //Debug.Log(difficulty);
         if ( Input.GetKeyDown(KeyCode.Escape ) )
         {

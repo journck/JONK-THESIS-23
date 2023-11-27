@@ -65,6 +65,6 @@ public class Upgrade : MonoBehaviour
 
     public void DamagePlayer(int percent)
     {
-        player.TakeDamage(player.maxHealth * percent);
+        player.TakeDamage(player.maxHealth * (percent / 100));
     }
 }
