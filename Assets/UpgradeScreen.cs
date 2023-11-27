@@ -106,9 +106,10 @@ public class UpgradeScreen : MonoBehaviour
             int randomIndex = Random.Range(0, workingList.Count);
             Upgrade instantiatedUpgrade = Instantiate(workingList[randomIndex], this.transform);
             Vector3 drawLocation = new Vector3(SPACING * (i - 1), 0, 0);
-            instantiatedUpgrade.transform.position = drawLocation;
+            Debug.Log("drawing the " + i + " upgrade at " + drawLocation.ToString());
+            instantiatedUpgrade.transform.localPosition = drawLocation;
             upgrades[i] = instantiatedUpgrade;
-            Debug.Log("instantiating upgrade");
+            //Debug.Log("instantiating upgrade");
 
             //making sure same upgrade can't be displayed twice
             workingList.RemoveAt(randomIndex);
