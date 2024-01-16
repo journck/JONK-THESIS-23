@@ -145,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 1616222066899805690, guid: 2d2703c4f06294221997f1eda11f1f80,
         type: 3}
       propertyPath: upgradeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 15
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5822955258858601195, guid: 2d2703c4f06294221997f1eda11f1f80,
         type: 3}

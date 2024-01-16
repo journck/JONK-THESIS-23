@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Inscribed")]
     public Field[] fields;
-    const float diffConst = 0.23f;
+    const float diffConst = 0.5f;
     const float diffExp = 1.0025f;
 
     [Header("Dynamic")]
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        difficulty = Mathf.Pow(diffConst * Time.timeSinceLevelLoad * 3, diffExp);
+        difficulty = Mathf.Pow(diffConst * Time.timeSinceLevelLoad, diffExp);
         //Debug.Log(difficulty);
         if ( Input.GetKeyDown(KeyCode.Escape ) )
         {
@@ -87,10 +87,10 @@ public class GameManager : MonoBehaviour
 
             //fieldsPaused = !fieldsPaused;
 
-            foreach ( Field f in fields)
-            {
-                f.player.GainXP(1000);
-            }
+            //foreach ( Field f in fields)
+            //{
+            //    f.player.GainXP(1000);
+            //}
         }
     }
 

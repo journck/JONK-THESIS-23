@@ -12,12 +12,15 @@ public class EnemyManager : MonoBehaviour
 
     [Header("Dynamic")]
     public bool canSpawn = true;
+
+    //making these separate such that other scripts can mess with it
+    public float a = 0.00004f;
+    public float b = 0.003f;
+    public float c = 0.1f;
     public float enemiesPerSecond
     {
         get {
-            float a = 0.00004f;
-            float b = 0.003f;
-            float c = 0.1f;
+
             float val = Mathf.Pow(a * Time.timeSinceLevelLoad, 2) + b * Time.timeSinceLevelLoad + c;
             //float val = 0.05f * Time.timeSinceLevelLoad + 0.5f;
             Debug.Log(val);

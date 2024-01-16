@@ -58,9 +58,11 @@ public class Upgrade : MonoBehaviour
         player.upgrades[attribute]++;
     }
 
+
+    // NOTE- scalar should be > 1 in order to increase.
     public void IncreaseDifficulty(float scalar)
     {
-        GameManager.instance.difficulty *= scalar;
+        player.parentField.enemyManager.a *= scalar;
     }
 
     public void DamagePlayer(int percent)
