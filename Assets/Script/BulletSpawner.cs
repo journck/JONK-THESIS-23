@@ -54,9 +54,13 @@ public class BulletSpawner : MonoBehaviour
 
     public void SetProperties( Bullet bullet )
     {
+        if (bullet == null)
+        {
+            Debug.Log("bullet is null");
+        }
         bullet.owner = character;
         bullet.transform.localScale = new Vector3(this.scale, this.scale, this.scale);
-        bullet.GetComponent<SpriteRenderer>().color = this.bulletColor;
+        bullet.color = this.bulletColor;
         bullet.moveSpeed = this.moveSpeed;
         bullet.damage = this.damage;
         bullet.shouldRotate = shouldRotatePlayer;

@@ -9,16 +9,24 @@ public class Bullet : MonoBehaviour
     public float moveSpeed;
     public float damage;
     public float knockbackMultiplier = 400f;
-    private Rigidbody2D rigidBody;
+    private Rigidbody rigidBody;
     public bool shouldRotate;
     public Vector2 cachedVelocity;
     public bool isPaused = false;
     public Field parentField;
+    public MeshRenderer meshRenderer;
+    public Color color
+    {
+        get { return meshRenderer.material.color; }
+        set { meshRenderer.material.color = value; }
+    }
+    
 
 
     private void Awake()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
+        meshRenderer = GetComponentInChildren<MeshRenderer>();
+        rigidBody = GetComponentInChildren<Rigidbody>();
     }
 
     private void Update()
@@ -55,10 +63,13 @@ public class Bullet : MonoBehaviour
     {
         Vector3 vel = direction.normalized * moveSpeed;
         //Debug.Log("projecting bullet");
+
+        // TODO - fix this so it actaully looks @ where it's going
+        this.transform.LookAt(vel.normalized, Vector3.up);
         rigidBody.velocity = vel;
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter(Collider other)
     {
         GameObject otherGO = other.gameObject;
 
@@ -103,7 +114,7 @@ public class Bullet : MonoBehaviour
     {
         this.transform.position = pos;
         this.transform.rotation = rotation;
-        this.GetComponent<SpriteRenderer>().color = color;
+        this.color = color;
         this.moveSpeed = moveSpeed;
         this.damage = damage;
         this.shouldRotate = shouldRotate;
