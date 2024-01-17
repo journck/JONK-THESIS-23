@@ -33,6 +33,8 @@ public class BulletSpawner : MonoBehaviour
                 if (character is Enemy enemy)
                 {
                     Vector3 dir = enemy.playerPosition - this.transform.position;
+                    this.transform.LookAt(dir);
+                    Debug.Log(" the rotation of this bullet is " + this.transform.rotation);
                     bullet.ProjectBullet(dir);
                 }
                 break;
@@ -59,6 +61,7 @@ public class BulletSpawner : MonoBehaviour
             Debug.Log("bullet is null");
         }
         bullet.owner = character;
+        bullet.transform.rotation = character.transform.rotation;
         bullet.transform.localScale = new Vector3(this.scale, this.scale, this.scale);
         bullet.color = this.bulletColor;
         bullet.moveSpeed = this.moveSpeed;

@@ -65,7 +65,7 @@ public class Bullet : MonoBehaviour
         //Debug.Log("projecting bullet");
 
         // TODO - fix this so it actaully looks @ where it's going
-        this.transform.LookAt(vel.normalized, Vector3.up);
+        this.gameObject.transform.rotation = this.owner.gameObject.transform.rotation;
         rigidBody.velocity = vel;
     }
 
