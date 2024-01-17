@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
+    public enum FieldSpace
+    {
+        TopLeft,
+        TopRight,
+        BottomLeft,
+        BottomRight
+    }
+
     [Header("Inscribed")]
     public Player[] players;
     public FollowCam cam;
     public Bar healthBar;
     public Bar expBar;
     public UpgradeScreen upgradeScreen;
+    public FieldSpace fieldSpace;
 
 
     [Header("Dynamic")]
@@ -21,7 +30,6 @@ public class Field : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log(healthBar);
         Player playerPrefab = players[Random.Range(0, players.Length)];
         player = Instantiate(playerPrefab, this.transform);
         player.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 4) * 90);

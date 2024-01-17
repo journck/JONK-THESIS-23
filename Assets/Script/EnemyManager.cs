@@ -23,8 +23,8 @@ public class EnemyManager : MonoBehaviour
 
             float val = Mathf.Pow(a * Time.timeSinceLevelLoad, 2) + b * Time.timeSinceLevelLoad + c;
             //float val = 0.05f * Time.timeSinceLevelLoad + 0.5f;
-            Debug.Log(val);
-            return val;
+            float valSkewed = Random.Range(val * 0.9f, val * 1.1f);
+            return valSkewed;
         }
     }
     public float spawnInterval

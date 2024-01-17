@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1359385852723555690}
   - component: {fileID: 1359385852723555692}
   - component: {fileID: 1359385852723555693}
-  - component: {fileID: 310900381}
+  - component: {fileID: 8962122682395206182}
   m_Layer: 5
   m_Name: ExpBar
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &310900381
+--- !u!114 &8962122682395206182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,3 +90,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dead435f858454989a8acdead10cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barType: 0

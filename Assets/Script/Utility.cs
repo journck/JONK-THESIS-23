@@ -70,4 +70,12 @@ public static class Utility
 
         //Debug.Log("Done setting this gameObject and its children to " + boolean);
     }
+
+    public enum FieldSpace
+    {
+        TopLeft,
+        TopRight,
+        BottomLeft,
+        BottomRight
+    }
 }

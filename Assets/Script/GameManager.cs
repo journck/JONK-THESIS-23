@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //TODO - iterate over array of players.
-    //public Player[] players = new Player[4];
-
-
     [Header("Inscribed")]
     public Field[] fields;
     const float diffConst = 0.5f;
