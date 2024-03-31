@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 4601298099403982109, guid: 79b6230c71a974bc99e7f5ac408edd4e, type: 3}
+  - {fileID: -5722106940716253786, guid: 79b6230c71a974bc99e7f5ac408edd4e, type: 3}
   cam: {fileID: 696726797}
   healthBar: {fileID: 1054829687}
   expBar: {fileID: 2105822723}
@@ -1605,7 +1605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 4601298099403982109, guid: 79b6230c71a974bc99e7f5ac408edd4e, type: 3}
+  - {fileID: -5722106940716253786, guid: 79b6230c71a974bc99e7f5ac408edd4e, type: 3}
   cam: {fileID: 489073684}
   healthBar: {fileID: 53457314}
   expBar: {fileID: 1675850866}
@@ -1660,7 +1660,7 @@ PrefabInstance:
     - target: {fileID: 827084724772582557, guid: 7853bc5076de64b7497b4657e5cc9947,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.47
       objectReference: {fileID: 0}
     - target: {fileID: 827084724772582557, guid: 7853bc5076de64b7497b4657e5cc9947,
         type: 3}
@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 4601298099403982109, guid: 79b6230c71a974bc99e7f5ac408edd4e, type: 3}
+  - {fileID: -5722106940716253786, guid: 79b6230c71a974bc99e7f5ac408edd4e, type: 3}
   cam: {fileID: 1546476290}
   healthBar: {fileID: 365461148}
   expBar: {fileID: 8962122682395206182}
@@ -2359,7 +2359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 4601298099403982109, guid: 79b6230c71a974bc99e7f5ac408edd4e, type: 3}
+  - {fileID: -5722106940716253786, guid: 79b6230c71a974bc99e7f5ac408edd4e, type: 3}
   cam: {fileID: 1034237435}
   healthBar: {fileID: 958793096}
   expBar: {fileID: 2107855290}

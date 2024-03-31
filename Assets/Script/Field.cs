@@ -32,7 +32,7 @@ public class Field : MonoBehaviour
     {
         Player playerPrefab = players[Random.Range(0, players.Length)];
         player = Instantiate(playerPrefab, this.transform);
-        player.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 4) * 90);
+        player.transform.rotation = Quaternion.Euler(Random.Range(0, 4) * 90, 90, 270);
         enemyManager = GetComponentInChildren<EnemyManager>();
         cam.toFollow = player.gameObject;
     }

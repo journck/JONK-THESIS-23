@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
         startRotation = this.transform.rotation;
+        Debug.Log(startRotation.eulerAngles);
         endRotation = startRotation;
     }
 
@@ -120,7 +121,11 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         startRotation = this.transform.rotation;
-        endRotation = startRotation * Quaternion.Euler(0, 0, 90*dir);
+        float currentX = startRotation.eulerAngles.x;
+        float nextX = currentX + 90f * dir;
+        Debug.Log("current x rotation " + currentX);
+        Debug.Log("end x rotation " + nextX);
+        endRotation = startRotation * Quaternion.Euler(1, 90f * dir, 1);
         currentTime = 0;
         isRotating = true;
     }
