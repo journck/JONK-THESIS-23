@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Dynamic")]
     private float turnTimeSec;
-    private Rigidbody2D rigidBody;
+    private Rigidbody rigidBody;
     private Player player;
     private Vector2 moveDirection = Vector2.zero;
     private Quaternion startRotation;
@@ -25,10 +25,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody>();
         player = GetComponent<Player>();
         startRotation = this.transform.rotation;
-        Debug.Log(startRotation.eulerAngles);
         endRotation = startRotation;
     }
 
@@ -122,9 +121,6 @@ public class PlayerMovement : MonoBehaviour
         }
         startRotation = this.transform.rotation;
         float currentX = startRotation.eulerAngles.x;
-        float nextX = currentX + 90f * dir;
-        Debug.Log("current x rotation " + currentX);
-        Debug.Log("end x rotation " + nextX);
         endRotation = startRotation * Quaternion.Euler(1, 90f * dir, 1);
         currentTime = 0;
         isRotating = true;

@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 6867538790893178791}
   - component: {fileID: 5646569956404152026}
   - component: {fileID: 1841518815169766714}
+  - component: {fileID: -8221888360045282347}
+  - component: {fileID: -3893089961385636105}
+  - component: {fileID: -2843770807749053275}
   m_Layer: 0
   m_Name: DefaultShip
   m_TagString: Untagged
@@ -47,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c0be26b2d2849d7a6a38f39cc768a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 0
-  baseMoveSpeed: 0
+  health: 100
+  maxHealth: 100
+  baseMoveSpeed: 100
   parentField: {fileID: 0}
   baseShotsPerSecond: 0.5
   positionSendInterval: 1
@@ -82,7 +85,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4601298099403982104}
-  m_Mesh: {fileID: -2422165522289261425, guid: 1a37a3cf2a37d47eeb272e5add7642b5, type: 3}
+  m_Mesh: {fileID: -2422165522289261425, guid: baf7e55536bb145edb8806d4b505431f, type: 3}
 --- !u!23 &1841518815169766714
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -128,3 +131,53 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &-8221888360045282347
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601298099403982104}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 10
+  m_AngularDrag: 10
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 104
+  m_CollisionDetection: 0
+--- !u!65 &-3893089961385636105
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601298099403982104}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9999999, y: 0.59999996, z: 2.0256698}
+  m_Center: {x: 0, y: 0.29999998, z: 0}
+--- !u!114 &-2843770807749053275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601298099403982104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e02774dcf2a44dfbc8decb1df3b17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletColor: {r: 0.14285529, g: 1, b: 0, a: 0}
+  shouldRotatePlayer: 0
+  scale: 1
+  moveSpeed: 15
+  damage: 10
+  shootBehavior: 1
+  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  character: {fileID: 0}
+  canShoot: 1
