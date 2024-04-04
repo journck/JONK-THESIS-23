@@ -56,6 +56,11 @@ public class Bullet : MonoBehaviour
                 }
             }
         }
+
+        if (rigidBody.velocity != null)
+        {
+            this.transform.LookAt(rigidBody.velocity);
+        }
     }
 
     // linear projection
@@ -66,6 +71,7 @@ public class Bullet : MonoBehaviour
 
         // TODO - fix this so it actaully looks @ where it's going
         this.gameObject.transform.rotation = this.owner.gameObject.transform.rotation;
+        //this.transform.LookAt(direction);
         rigidBody.velocity = vel;
     }
 
