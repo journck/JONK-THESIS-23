@@ -15,7 +15,7 @@ public class Enemy : Character
 
     private void Awake()
     {
-        bulletSpawner = GetComponent<BulletSpawner>();
+        bulletSpawner = GetComponentInChildren<BulletSpawner>();
         Invoke(nameof(Shoot), shootInterval);
         parentField = GetComponentInParent<Field>();
     }

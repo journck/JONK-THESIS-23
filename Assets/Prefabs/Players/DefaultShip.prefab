@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &384505003422180958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6791276271366391476}
+  - component: {fileID: 5516200332268835724}
+  m_Layer: 0
+  m_Name: BulletSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6791276271366391476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384505003422180958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0.854}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4601298099403982110}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5516200332268835724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384505003422180958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e02774dcf2a44dfbc8decb1df3b17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletColor: {r: 0.14285529, g: 1, b: 0, a: 1}
+  shouldRotatePlayer: 0
+  scale: 1
+  moveSpeed: 15
+  damage: 10
+  shootBehavior: 1
+  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  character: {fileID: 0}
+  canShoot: 1
 --- !u!1 &4601298099403982104
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +68,6 @@ GameObject:
   - component: {fileID: 1841518815169766714}
   - component: {fileID: -8221888360045282347}
   - component: {fileID: -3893089961385636105}
-  - component: {fileID: -2843770807749053275}
   m_Layer: 0
   m_Name: DefaultShip
   m_TagString: Untagged
@@ -30,14 +82,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4601298099403982104}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.9999999, y: 0, z: -1.4999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6791276271366391476}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &-5722106940716253786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,29 +208,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4601298099403982104}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9999999, y: 0.59999996, z: 2.0256698}
+  m_Size: {x: 2, y: 15, z: 2.0256698}
   m_Center: {x: 0, y: 0.29999998, z: 0}
---- !u!114 &-2843770807749053275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4601298099403982104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25e02774dcf2a44dfbc8decb1df3b17f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletColor: {r: 0.14285529, g: 1, b: 0, a: 0}
-  shouldRotatePlayer: 0
-  scale: 1
-  moveSpeed: 15
-  damage: 10
-  shootBehavior: 1
-  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
-  character: {fileID: 0}
-  canShoot: 1

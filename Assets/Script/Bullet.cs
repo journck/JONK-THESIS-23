@@ -86,11 +86,13 @@ public class Bullet : MonoBehaviour
         {
             hitEnemy.TakeDamage(this.damage);
             BulletPooling.instance.ReturnToPool(this);
+            Debug.Log("player bullet hit enemy");
             return;
         }
         // enemy bullet hit player 
         if ( owner is Enemy && hitPlayer != null)
         {
+            Debug.Log("enemy bullet hit player");
             if ( this.shouldRotate)
             {
                 //TODO - should probably make this dependant on where the collision occurred instead of random
@@ -110,15 +112,15 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void setBulletProperties( Vector3 pos, Quaternion rotation, Color color, float moveSpeed, float damage, bool shouldRotate)
-    {
-        this.transform.position = pos;
-        this.transform.rotation = rotation;
-        this.color = color;
-        this.moveSpeed = moveSpeed;
-        this.damage = damage;
-        this.shouldRotate = shouldRotate;
-    }
+    //public void setBulletProperties( Vector3 pos, Quaternion rotation, Color color, float moveSpeed, float damage, bool shouldRotate)
+    //{
+    //    this.transform.position = pos;
+    //    this.transform.rotation = rotation;
+    //    this.color = color;
+    //    this.moveSpeed = moveSpeed;
+    //    this.damage = damage;
+    //    this.shouldRotate = shouldRotate;
+    //}
 
     //public void SetActiveBullet(bool boolean)
     //{

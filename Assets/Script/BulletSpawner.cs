@@ -18,7 +18,7 @@ public class BulletSpawner : MonoBehaviour
 
     void Start()
     {
-        character = GetComponent<Character>();
+        character = GetComponentInParent<Character>();
     }
 
     public void ShootBullet()
@@ -37,7 +37,12 @@ public class BulletSpawner : MonoBehaviour
                 }
                 break;
             case ShootBehavior.ShootForward:
-                bullet.ProjectBullet(this.transform.up);
+                Vector3 shootDir = this.transform.position - character.transform.position;
+                //Vector3 thng = this.gameObject.LookAt(this.transform.up);
+
+                Debug.DrawLine(this.transform.position, character.transform.position, Color.red, 2f);
+
+                bullet.ProjectBullet(shootDir);
                 break;
             default:
                 break;
@@ -64,7 +69,7 @@ public class BulletSpawner : MonoBehaviour
         bullet.moveSpeed = this.moveSpeed;
         bullet.damage = this.damage;
         bullet.shouldRotate = shouldRotatePlayer;
-        bullet.transform.SetPositionAndRotation(this.transform.position, character.transform.rotation);
+        bullet.transform.SetPositionAndRotation(this.transform.position, Quaternion.Euler(0, 0, this.transform.rotation.z));
         bullet.parentField = character.parentField;
     }
 

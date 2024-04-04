@@ -53,7 +53,7 @@ public class Player : Character
 
 
         playerMovement = GetComponent<PlayerMovement>();
-        bulletSpawner = GetComponent<BulletSpawner>();
+        bulletSpawner = GetComponentInChildren<BulletSpawner>();
         
     }
 

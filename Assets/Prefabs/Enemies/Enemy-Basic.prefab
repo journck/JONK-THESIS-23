@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5347125969482871830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6379865174807376132}
+  - component: {fileID: 4717334540053433874}
+  m_Layer: 9
+  m_Name: BulletSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6379865174807376132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5347125969482871830}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1165, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8641865576125782444}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4717334540053433874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5347125969482871830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e02774dcf2a44dfbc8decb1df3b17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletColor: {r: 1, g: 0.74509805, b: 0, a: 1}
+  shouldRotatePlayer: 0
+  scale: 1
+  moveSpeed: 20
+  damage: 1
+  shootBehavior: 0
+  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  character: {fileID: 0}
+  canShoot: 1
 --- !u!1 &8641865576125782440
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +66,6 @@ GameObject:
   - component: {fileID: 8641865576125782446}
   - component: {fileID: 8641865576125782441}
   - component: {fileID: 1863540516609669254}
-  - component: {fileID: 7152943732426439650}
   m_Layer: 9
   m_Name: Enemy-Basic
   m_TagString: Enemy
@@ -32,7 +84,8 @@ Transform:
   m_LocalPosition: {x: 5.99, y: 6.93, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6379865174807376132}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,15 +156,14 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   baseMoveSpeed: 4
+  parentField: {fileID: 0}
   bulletSpawner: {fileID: 0}
   shootInterval: 1
   playerPosition: {x: 0, y: 0, z: 0}
   turnEasing: 0.95
   moveEasing: 0.05
-  xpValue: 10
   xpPrefab: {fileID: 2730037013297531433, guid: 1829ff5e47155485caf7df12eb85ca4b,
     type: 3}
-  parentField: {fileID: 0}
 --- !u!58 &8641865576125782441
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -149,23 +201,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7152943732426439650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8641865576125782440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25e02774dcf2a44dfbc8decb1df3b17f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletColor: {r: 1, g: 0.74509805, b: 0, a: 1}
-  shouldRotatePlayer: 0
-  scale: 1
-  moveSpeed: 20
-  damage: 1
-  shootBehavior: 0
-  spawnRotation: {x: 0, y: 0, z: 0, w: 0}
-  character: {fileID: 0}
