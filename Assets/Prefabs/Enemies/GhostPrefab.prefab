@@ -343,6 +343,7 @@ MonoBehaviour:
   moveEasing: 0.05
   xpPrefab: {fileID: 2730037013297531433, guid: 1829ff5e47155485caf7df12eb85ca4b,
     type: 3}
+  z: 0
 --- !u!95 &8169734018962518800
 Animator:
   serializedVersion: 4
@@ -351,12 +352,12 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505377301297335444}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b39a83270af7641d7a768442173c2ffd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -372,7 +373,7 @@ BoxCollider:
   m_GameObject: {fileID: 1505377301297335444}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5, y: 5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
