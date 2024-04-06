@@ -33,7 +33,7 @@ public class ExperiencePoint : MonoBehaviour
             step);
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter(Collider other)
     {
         Player playerCollecting = other.GetComponent<Player>();
         if ( playerCollecting == null )
@@ -41,6 +41,7 @@ public class ExperiencePoint : MonoBehaviour
             return;
         }
         playerCollecting.GainXP(this.value);
+        //playsound
         Destroy(this.gameObject);
     }
 }
