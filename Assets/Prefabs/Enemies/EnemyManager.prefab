@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0db98926f4e4e9b865e9511d2a32b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 2.5
   spawnDistance: 11
   maxEnemies: -1
   enemyPrefabs:
-  - {fileID: 8641865576125782446, guid: 6c02e3383088b4449b07eba4bbd83002, type: 3}
-  - {fileID: 8641865576125782446, guid: 406eac7fae6c0446aa59602519878dc5, type: 3}
+  - {fileID: 4962973169007632249, guid: f5f3e751ca75b413ba0058075cafbe16, type: 3}
   canSpawn: 1
+  a: 0.00004
+  b: 0.003
+  c: 0.1

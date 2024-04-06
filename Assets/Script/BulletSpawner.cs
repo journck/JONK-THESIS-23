@@ -40,7 +40,7 @@ public class BulletSpawner : MonoBehaviour
                 Vector3 shootDir = this.transform.position - character.transform.position;
                 //Vector3 thng = this.gameObject.LookAt(this.transform.up);
 
-                Debug.DrawLine(this.transform.position, character.transform.position, Color.red, 2f);
+                //Debug.DrawLine(this.transform.position, character.transform.position, Color.red, 2f);
 
                 bullet.ProjectBullet(shootDir);
                 break;

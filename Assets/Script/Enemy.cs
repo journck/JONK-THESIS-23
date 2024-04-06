@@ -27,11 +27,31 @@ public class Enemy : Character
         xpValue = GameManager.instance.difficulty;
     }
 
+    public float z = 0f;
+
     // Update is called once per frame
     void Update()
     {
         // look towards the player
-        this.transform.up = Vector3.Lerp(this.transform.up, parentField.player.transform.position - this.transform.position, turnEasing);
+        //z = z >= 360f ? 0f : z + 1;
+        Vector3 playerPos = this.parentField.player.transform.position;
+
+        float xDist = playerPos.x - this.transform.position.x;
+        float yDist = - playerPos.y + this.transform.position.y;
+        float xAngle = Mathf.Atan2(yDist, xDist) * Mathf.Rad2Deg;
+
+        this.transform.rotation = Quaternion.Euler(xAngle, 90f, -90f);
+        //Vector3 testingV;
+
+        //Vector3 toPlayer = parentField.player.transform.position - this.transform.position;
+
+        //Debug.DrawLine(this.transform.position, toPlayer, Color.green, 2f);
+        //Debug.DrawLine(this.transform.position, this.transform.forward, Color.blue, 2f);
+        ////this.transform.forward = Vector3.Lerp(this.transform.forward, parentField.player.transform.position - this.transform.position, turnEasing);
+        //this.transform.LookAt(parentField.player.transform.position);
+        //transform.rotation *= Quaternion.FromToRotation(Vector3.left, Vector3.forward);
+
+      
     }
 
     private void FixedUpdate()

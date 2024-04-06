@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 514011156246956708}
   - component: {fileID: 418129707073970355}
   - component: {fileID: -3849743839728586787}
-  - component: {fileID: 5981976672381852194}
+  - component: {fileID: 1005203272457119623}
   m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949618284359628675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949618284359628675}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2432090755550338912, guid: 34c935ac2dce24eddb489a3a82526da7, type: 3}
 --- !u!23 &514011156246956708
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -121,10 +121,10 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 8
   m_CollisionDetection: 0
---- !u!136 &5981976672381852194
-CapsuleCollider:
+--- !u!135 &1005203272457119623
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -133,7 +133,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 10
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 0.433013
   m_Center: {x: 0, y: 0, z: 0}

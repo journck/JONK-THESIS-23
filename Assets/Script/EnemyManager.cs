@@ -89,7 +89,10 @@ public class EnemyManager : MonoBehaviour
 
         Vector3 spawnPoint = this.transform.position + GetPointOnSquareEdge(Random.value * 360);
         Enemy createdEnemy = Instantiate(GetRandomEnemy(), parentField.transform);
-        createdEnemy.transform.position = spawnPoint;
+
+        //TODO- remove hardcoded z axis offset
+        createdEnemy.transform.position = new(spawnPoint.x, spawnPoint.y, parentField.player.transform.position.z);
+        createdEnemy.transform.rotation = Quaternion.Euler(0, 90, -90);
 
         parentField.enemyList.Add(createdEnemy);
         
