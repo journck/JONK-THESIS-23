@@ -9,6 +9,7 @@ public class ExperiencePoint : MonoBehaviour
 
     // maximum speed that the exp point can reach when lerping towards player
     public float maxSpeed = 50f;
+    public float rotateSpeed = 60f;
 
 
 
@@ -31,6 +32,11 @@ public class ExperiencePoint : MonoBehaviour
             this.transform.position,
             playerRef.transform.position,
             step);
+
+        float upAngle = this.rotateSpeed * Time.deltaTime;
+        float sideAngle = upAngle * 2;
+        transform.Rotate(Vector3.up, upAngle);
+        transform.Rotate(Vector3.forward, sideAngle);
     }
 
     public void OnTriggerEnter(Collider other)

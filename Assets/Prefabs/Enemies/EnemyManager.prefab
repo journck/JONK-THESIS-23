@@ -48,6 +48,9 @@ MonoBehaviour:
   maxEnemies: -1
   enemyPrefabs:
   - {fileID: 4962973169007632249, guid: f5f3e751ca75b413ba0058075cafbe16, type: 3}
+  - {fileID: 4962973169007632249, guid: b45add35e54bf48278cc93c31ad801ee, type: 3}
+  - {fileID: 4962973169007632249, guid: de1a154bcbbb34c28a623dc97f71dede, type: 3}
+  - {fileID: 4962973169007632249, guid: a2592131f085f4dc29ec4fdd09e131a9, type: 3}
   canSpawn: 1
   a: 0.00004
   b: 0.003

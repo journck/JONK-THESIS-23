@@ -25,8 +25,9 @@ public class Enemy : Character
     // Start is called before the first frame update
     void Start()
     {
-   
-        xpValue = GameManager.instance.difficulty;
+
+        //xpValue = GameManager.instance.difficulty;
+        xpValue = 1f;
     }
 
     public float z = 0f;

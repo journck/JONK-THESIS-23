@@ -39,7 +39,8 @@ public static class Utility
     // ripped from halls of torment : https://hot.fandom.com/wiki/Game_Mechanics
     public static float ExpForLevel(uint currentLevel)
     {
-        return (150 * Mathf.Pow(1.01f, currentLevel) - 7 * Mathf.Pow(0.97f, currentLevel) - 1) * currentLevel;
+        //return (100 * Mathf.Pow(1.02f, currentLevel) - 7 * Mathf.Pow(0.97f, currentLevel) - 1) * currentLevel;
+        return Mathf.Pow(2f, currentLevel);
     }
 
     //// returns a dictionary with 

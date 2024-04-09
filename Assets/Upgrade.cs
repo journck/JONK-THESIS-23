@@ -60,13 +60,19 @@ public class Upgrade : MonoBehaviour
 
 
     // NOTE- scalar should be > 1 in order to increase.
-    public void IncreaseDifficulty(float scalar)
+    public void DoubleSpawn(float scalar)
     {
-        player.parentField.enemyManager.a *= scalar;
+        player.parentField.enemyManager.b *= scalar;
     }
 
     public void DamagePlayer(int percent)
     {
         player.TakeDamage(player.maxHealth * (percent / 100));
+    }
+
+    public void ShrinkCamera(int amount)
+    {
+        //TODO cmon cam.cam......
+        player.parentField.cam.cam.orthographicSize = Mathf.Max(player.parentField.cam.cam.orthographicSize - amount, 1);
     }
 }

@@ -43,15 +43,22 @@ public class GameManager : MonoBehaviour
 
     public void CheckForRestart()
     {
+        bool anyAlive = false;
         foreach (Player p in players)
         {
-            if (!p.IsDead())
+            if (p.IsDead())
             {
-                return;
+                Utility.SetActiveGOAndChildren(p.parentField.gameObject, false);
             }
-            Utility.SetActiveGOAndChildren(p.parentField.gameObject, false);
+            else
+            {
+                anyAlive = true;
+            }
         }
-        RestartGame();
+        if (anyAlive == false)
+        {
+            RestartGame();
+        }
     }   
 
     // called when all players die

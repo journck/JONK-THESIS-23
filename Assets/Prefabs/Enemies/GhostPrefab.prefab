@@ -343,6 +343,7 @@ MonoBehaviour:
   moveEasing: 0.05
   xpPrefab: {fileID: 2730037013297531433, guid: 1829ff5e47155485caf7df12eb85ca4b,
     type: 3}
+  animator: {fileID: 0}
   z: 0
 --- !u!95 &8169734018962518800
 Animator:
@@ -437,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e02774dcf2a44dfbc8decb1df3b17f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletColor: {r: 1, g: 0.74509805, b: 0, a: 1}
+  bulletColor: {r: 0.6320543, g: 0, b: 1, a: 1}
   shouldRotatePlayer: 0
   scale: 1
   moveSpeed: 20

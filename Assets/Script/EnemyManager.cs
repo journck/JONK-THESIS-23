@@ -15,7 +15,7 @@ public class EnemyManager : MonoBehaviour
 
     //making these separate such that other scripts can mess with it
     public float a = 0.00004f;
-    public float b = 0.003f;
+    public float b = 0.05f;
     public float c = 0.1f;
     public float enemiesPerSecond
     {
@@ -29,7 +29,10 @@ public class EnemyManager : MonoBehaviour
     }
     public float spawnInterval
     {   
-        get { return (1 / enemiesPerSecond); }
+        get {
+            float rand = Random.Range(0.95f, 1.05f);
+            return (1 / (enemiesPerSecond*rand));
+        }
     }
 
     private void Start()
