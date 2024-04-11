@@ -6,6 +6,7 @@ public class ExperiencePoint : MonoBehaviour
 {
     public float value;
     public Player playerRef;
+    public AudioClip xpSFX;
 
     // maximum speed that the exp point can reach when lerping towards player
     public float maxSpeed = 50f;
@@ -48,6 +49,7 @@ public class ExperiencePoint : MonoBehaviour
         }
         playerCollecting.GainXP(this.value);
         //playsound
+        GameManager.instance.soundController.PlaySound(xpSFX);
         Destroy(this.gameObject);
     }
 }

@@ -11,7 +11,8 @@ public class Character : MonoBehaviour
     public float maxHealth;
     public int baseMoveSpeed;
     public Field parentField;
-
+    public AudioClip damageSFX;
+    public AudioClip deathSFX;
 
 
     public virtual void TakeDamage ( float iDamage )
@@ -26,6 +27,7 @@ public class Character : MonoBehaviour
         }
         else
         {
+            GameManager.instance.soundController.PlaySound(damageSFX); 
             health -= damage;
         }
     }
@@ -38,6 +40,7 @@ public class Character : MonoBehaviour
         }
         else
         {
+            GameManager.instance.soundController.PlaySound(deathSFX);
             Destroy(this.gameObject);
         }
     }

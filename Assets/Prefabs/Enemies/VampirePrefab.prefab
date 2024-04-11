@@ -136,6 +136,8 @@ MonoBehaviour:
   maxHealth: 10
   baseMoveSpeed: 4
   parentField: {fileID: 0}
+  damageSFX: {fileID: 8300000, guid: 656d1ddaf95444a08aaa5aaf34fd01e3, type: 3}
+  deathSFX: {fileID: 8300000, guid: 75590346b8eb44a08b0a5987d6b6e70f, type: 3}
   bulletSpawner: {fileID: 0}
   shootInterval: 1
   playerPosition: {x: 0, y: 0, z: 0}

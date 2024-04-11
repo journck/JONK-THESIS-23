@@ -107,10 +107,14 @@ MonoBehaviour:
   maxHealth: 100
   baseMoveSpeed: 100
   parentField: {fileID: 0}
+  damageSFX: {fileID: 8300000, guid: 5fead92719bb046faaa7a64ec1c72787, type: 3}
+  deathSFX: {fileID: 8300000, guid: 75590346b8eb44a08b0a5987d6b6e70f, type: 3}
   baseShotsPerSecond: 0.5
   positionSendInterval: 1
   debugShouldShoot: 1
   maxSuckDist: 4
+  shootSFX: {fileID: 8300000, guid: 1b6d67028f864474c8b4a7a18184a605, type: 3}
+  soundController: {fileID: 0}
   shotsPerSecond: 0
   playerMovement: {fileID: 0}
   activeAbility: 0

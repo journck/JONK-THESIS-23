@@ -16,10 +16,12 @@ public class GameManager : MonoBehaviour
     public Player[] players;
     public bool gamePaused = false;
     public bool fieldsPaused = false;
+    public SoundController soundController;
 
     // Start is called before the first frame update
     void Start()
     {
+        soundController = GetComponent<SoundController>();
         if (instance == null)
         {
             instance = this;

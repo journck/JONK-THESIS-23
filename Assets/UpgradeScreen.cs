@@ -14,6 +14,7 @@ public class UpgradeScreen : MonoBehaviour
     public TMP_Text titleTextRef;
     public TMP_Text descTextRef;
     public Image timeLeft;
+    public AudioClip upgradeSFX;
 
     //represents all of the possible upgrades that could be chosen;
     public List<Upgrade> upgradeOptionPrefabs;
@@ -168,6 +169,8 @@ public class UpgradeScreen : MonoBehaviour
             intermediate = 0;
         }
         //Debug.Log("old was " + cachedPos + " new is " + intermediate);
+
+        GameManager.instance.soundController.PlaySound(upgradeSFX);
         SelectedUpgradeIndex = intermediate;
     }
 }

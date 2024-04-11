@@ -580,6 +580,7 @@ MonoBehaviour:
   titleTextRef: {fileID: 623966882073774320}
   descTextRef: {fileID: 6058437805990363564}
   timeLeft: {fileID: 8327020258814884458}
+  upgradeSFX: {fileID: 8300000, guid: 330e34abff3044c01b9ad31b330fa28c, type: 3}
   upgradeOptionPrefabs:
   - {fileID: 7549083101512190800, guid: 450987f9fb7f34d8299fc726173c14a5, type: 3}
   - {fileID: 5035583680428423430, guid: b5ffbe8c1fda749809016f05a8a81f9d, type: 3}

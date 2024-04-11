@@ -19,6 +19,7 @@ public class Field : MonoBehaviour
     public Bar expBar;
     public UpgradeScreen upgradeScreen;
     public FieldSpace fieldSpace;
+    public SoundController soundController;
 
 
     [Header("Dynamic")]
@@ -33,6 +34,7 @@ public class Field : MonoBehaviour
         Player playerPrefab = players[Random.Range(0, players.Length)];
         player = Instantiate(playerPrefab, this.transform);
         player.transform.rotation = Quaternion.Euler(Random.Range(0, 4) * 90, 90, 270);
+        player.soundController = this.soundController;
         enemyManager = GetComponentInChildren<EnemyManager>();
         cam.toFollow = player.gameObject;
     }

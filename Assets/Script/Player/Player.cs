@@ -12,6 +12,9 @@ public class Player : Character
     //maximum distance that xp points will lerp towards player
     public float maxSuckDist = 4f;
 
+    public AudioClip shootSFX;
+    public SoundController soundController;
+
     private BulletSpawner bulletSpawner;
     private Bar healthBar;
     private Bar expBar;
@@ -40,6 +43,12 @@ public class Player : Character
 
 
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        //soundController = GameManager.instance.gameObject.GetComponent<SoundController>();
+    }
+
     void Start()
     {
         Invoke(nameof(Shoot), 1);
@@ -50,7 +59,6 @@ public class Player : Character
         healthBar.UpdateImg(health / maxHealth);
         expBar = parentField.expBar;
         expBar.UpdateImg(0);
-
 
         playerMovement = GetComponent<PlayerMovement>();
         bulletSpawner = GetComponentInChildren<BulletSpawner>();
@@ -96,6 +104,7 @@ public class Player : Character
             return;
         }
 
+        soundController.PlaySound(shootSFX, 0.3f );
         this.bulletSpawner.ShootBullet();
 
         Invoke(nameof(Shoot), ( 1 / shotsPerSecond ));
@@ -135,5 +144,11 @@ public class Player : Character
     private void OnEnable()
     {
         activeAbility = false;
+    }
+
+    public override void DoDeath()
+    {
+        soundController.PlaySound(base.deathSFX);
+        base.DoDeath();
     }
 }

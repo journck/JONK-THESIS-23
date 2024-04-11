@@ -49,7 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 0
   playerRef: {fileID: 0}
+  xpSFX: {fileID: 8300000, guid: c33dda74a40064fef80731dc58deb955, type: 3}
   maxSpeed: 10
+  rotateSpeed: 60
 --- !u!23 &-6325289353081225118
 MeshRenderer:
   m_ObjectHideFlags: 0
