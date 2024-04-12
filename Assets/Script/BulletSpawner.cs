@@ -67,7 +67,7 @@ public class BulletSpawner : MonoBehaviour
         bullet.transform.localScale = new Vector3(this.scale, this.scale, this.scale);
         bullet.color = this.bulletColor;
         bullet.moveSpeed = this.moveSpeed;
-        bullet.damage = this.damage;
+        bullet.damage = this.damage + GameManager.instance.difficulty / 10;
         bullet.shouldRotate = shouldRotatePlayer;
         bullet.transform.SetPositionAndRotation(this.transform.position, Quaternion.Euler(0, 0, this.transform.rotation.z));
         bullet.parentField = character.parentField;

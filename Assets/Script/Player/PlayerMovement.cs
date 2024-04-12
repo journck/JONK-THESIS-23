@@ -101,11 +101,11 @@ public class PlayerMovement : MonoBehaviour
         //rotation
         if ( Input.GetKeyDown( KeyCode.Q ) )
         {
-            TurnPlayer(1);
+            TurnPlayer(-1);
         }
         else if ( Input.GetKeyDown( KeyCode.E ) )
         {
-            TurnPlayer(-1);
+            TurnPlayer(1);
         }
       
         moveDirection = new Vector2( moveX, moveY ).normalized;
